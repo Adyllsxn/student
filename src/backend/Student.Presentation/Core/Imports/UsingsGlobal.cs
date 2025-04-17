@@ -15,6 +15,11 @@
 #region </Application>
     global using Student.Application.Abstractions.Interfaces;
     global using Student.Application.Abstractions.DI;
+    global using Student.Application.UseCases.Categoria.Create;
+    global using Student.Application.UseCases.Categoria.Delete;
+    global using Student.Application.UseCases.Categoria.GetById;
+    global using Student.Application.UseCases.Categoria.Search;
+    global using Student.Application.UseCases.Categoria.Update;
 #endregion
 
 #region </Infrastructure>

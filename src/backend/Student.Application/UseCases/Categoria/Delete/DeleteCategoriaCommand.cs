@@ -1,5 +1,5 @@
 namespace Student.Application.UseCases.Categoria.Delete;
-public sealed record DeleteCategoriaCommand
+public record DeleteCategoriaCommand
 {
     [Required]
     public int Id { get; set; }
