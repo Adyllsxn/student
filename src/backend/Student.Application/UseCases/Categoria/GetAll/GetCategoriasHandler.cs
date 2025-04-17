@@ -12,21 +12,24 @@ public sealed class GetCategoriasHandler(ICategoriaRepository repository)
                 return new Result<List<GetCategoriasResponse>>(
                     new List<GetCategoriasResponse>(), 
                     404, 
-                    "Nenhum dado encontrado");
+                    "Nenhum dado encontrado"
+                    );
             }
             var result = response.Data.MapToGetCategorias().ToList();
             
             return new Result<List<GetCategoriasResponse>>(
                 result, 
                 200, 
-                "Dados encontrados");
+                "Dados encontrados"
+                );
         }
         catch (Exception ex)
         {
             return new Result<List<GetCategoriasResponse>>(
                 null, 
                 500, 
-                $"Erro ao manupular a operação (GET ALL). Erro: {ex.Message}");
+                $"Erro ao manupular a operação (GET ALL). Erro: {ex.Message}"
+                );
         }
     }
 }

@@ -9,8 +9,8 @@ public static class GetCategoriasExtensions
             Nome = entity.Nome
         };
     }
-    public static IEnumerable<GetCategoriasResponse> MapToGetCategorias(this IEnumerable<CategoriaEntity> dto)
+    public static IEnumerable<GetCategoriasResponse> MapToGetCategorias(this IEnumerable<CategoriaEntity> response)
     {
-        return dto.Select(entity => entity.MapToGetCategorias());
+        return response.Select(entity => entity.MapToGetCategorias());
     }
 }

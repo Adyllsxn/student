@@ -1,7 +1,7 @@
 namespace Student.Application.MethodExtensions.Categoria;
 public static class CreateCategoriaExtensions
 {
-    public static CategoriaEntity MapToCreateCategoria(this CreateCategoriaCommand command)
+    public static CategoriaEntity MapToCategoriaEntity(this CreateCategoriaCommand command)
     {
         return new CategoriaEntity
         (
@@ -9,7 +9,7 @@ public static class CreateCategoriaExtensions
         );
     }
     
-    public static CreateCategoriaResponse MapToCreateCategorias (this CategoriaEntity entity)
+    public static CreateCategoriaResponse MapToCreateCategoria (this CategoriaEntity entity)
     {
         return new CreateCategoriaResponse
         {
@@ -17,8 +17,8 @@ public static class CreateCategoriaExtensions
             Nome = entity.Nome
         };
     }
-    public static IEnumerable<CreateCategoriaResponse> MapToCreateCategorias(this IEnumerable<CategoriaEntity> dto)
+    public static IEnumerable<CreateCategoriaResponse> MapToCreateCategoria(this IEnumerable<CategoriaEntity> response)
     {
-        return dto.Select(entity => entity.MapToCreateCategorias());
+        return response.Select(entity => entity.MapToCreateCategoria());
     }
 }

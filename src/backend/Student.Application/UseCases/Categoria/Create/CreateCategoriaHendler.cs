@@ -5,12 +5,12 @@ public class CreateCategoriaHendler(ICategoriaRepository repository, IUnitOfWork
     {
         try
         {
-            var entity = command.MapToCreateCategoria();
+            var entity = command.MapToCategoriaEntity();
             var response = await repository.CreateAsync(entity, token);
             await unitOfWork.CommitAsync();
 
             return new Result<CreateCategoriaResponse>(
-                response.Data?.MapToCreateCategorias(), 
+                response.Data?.MapToCreateCategoria(), 
                 response.Code, 
                 response.Message
             );
@@ -20,7 +20,8 @@ public class CreateCategoriaHendler(ICategoriaRepository repository, IUnitOfWork
             return new Result<CreateCategoriaResponse>(
                 null, 
                 500, 
-                $"Erro ao manipular a operação (CRIAR). Erro: {ex.Message}");
+                $"Erro ao manipular a operação (CRIAR). Erro: {ex.Message}"
+                );
         }
     }
 }

@@ -8,10 +8,18 @@ public class CategoriaRepository(AppDbContext context) : ICategoriaRepository
             {
                 if(entity == null)
                 {
-                    return new Result<CategoriaEntity>(null, 400, "Parâmetros não podem estar vazio.");
+                    return new Result<CategoriaEntity>(
+                        null, 
+                        400, 
+                        "Parâmetros não podem estar vazio."
+                        );
                 }
                 await context.Categorias.AddAsync(entity, token);
-                return new Result<CategoriaEntity>(entity, 201, "Operação executada com sucesso.");
+                return new Result<CategoriaEntity>(
+                    entity, 
+                    201, 
+                    "Operação executada com sucesso."
+                    );
             }
             catch (Exception ex)
             {
@@ -31,12 +39,20 @@ public class CategoriaRepository(AppDbContext context) : ICategoriaRepository
             {
                 if (entityId <= 0)
                 {
-                    return new Result<bool>(false, 400, "ID deve ser maior que zero.");
+                    return new Result<bool>(
+                        false, 
+                        400, 
+                        "ID deve ser maior que zero."
+                        );
                 }
                 var response = await context.Categorias.FindAsync(entityId, token);
                 if (response == null)
                 {
-                    return new Result<bool>(false, 404, "ID não encontrado.");
+                    return new Result<bool>(
+                        false, 
+                        404, 
+                        "ID não encontrado."
+                        );
                 }
                 context.Categorias.Remove(response);
                 return new Result<bool>(true, 200, "Operação executada com sucesso.");
@@ -46,7 +62,8 @@ public class CategoriaRepository(AppDbContext context) : ICategoriaRepository
                 return new Result<bool>(
                     false, 
                     500, 
-                    $"Erro ao executar a operação (DELETAR). Erro {ex.Message}.");
+                    $"Erro ao executar a operação (DELETAR). Erro {ex.Message}."
+                    );
             }
         }
     #endregion
@@ -59,17 +76,25 @@ public class CategoriaRepository(AppDbContext context) : ICategoriaRepository
                 var response = await context.Categorias.AsNoTracking().ToListAsync(token);
                 if (response == null || response.Count == 0)
                 {
-                    return new Result<List<CategoriaEntity>?>(null, 404, "Nenhum dado encontrado.");
+                    return new Result<List<CategoriaEntity>?>(
+                        null, 
+                        404, 
+                        "Nenhum dado encontrado."
+                        );
                 }
 
-                return new Result<List<CategoriaEntity>?>(response, 200, "Dados.");
+                return new Result<List<CategoriaEntity>?>(
+                    response, 
+                    200, 
+                    "Dados.");
             }
             catch (Exception ex)
             {
                 return new Result<List<CategoriaEntity>?>(
                     null, 
                     500, 
-                    $"Erro ao executar a operação (GET ALL). Erro {ex.Message}.");
+                    $"Erro ao executar a operação (GET ALL). Erro {ex.Message}."
+                    );
             }
         }
     #endregion
@@ -81,21 +106,34 @@ public class CategoriaRepository(AppDbContext context) : ICategoriaRepository
             {
                 if(entityId <= 0)
                 {
-                    return new Result<CategoriaEntity?>(null, 400, "ID deve ser maior que zero.");
+                    return new Result<CategoriaEntity?>(
+                        null, 
+                        400, 
+                        "ID deve ser maior que zero."
+                        );
                 }
                 var response = await context.Categorias.FindAsync(entityId, token);
                 if(response == null)
                 {
-                    return new Result<CategoriaEntity?>(null, 404, "ID não encontrado.");
+                    return new Result<CategoriaEntity?>(
+                        null, 
+                        404, 
+                        "ID não encontrado."
+                        );
                 }
-                return new Result<CategoriaEntity?>(response, 200, "Dados encontrado.");
+                return new Result<CategoriaEntity?>(
+                    response, 
+                    200, 
+                    "Dados encontrado."
+                    );
             }
             catch (Exception ex)
             {
                 return new Result<CategoriaEntity?>(
                     null, 
                     500, 
-                    $"Erro ao executar a operação (GET BY ID). Erro {ex.Message}.");
+                    $"Erro ao executar a operação (GET BY ID). Erro {ex.Message}."
+                    );
             }
         }
     #endregion
@@ -107,22 +145,35 @@ public class CategoriaRepository(AppDbContext context) : ICategoriaRepository
             {
                 if(entity == null)
                 {
-                    return new Result<List<CategoriaEntity>?>(null, 400, "Parâmetros não podem estar vazio.");
+                    return new Result<List<CategoriaEntity>?>(
+                        null, 
+                        400, 
+                        "Parâmetros não podem estar vazio."
+                        );
                 }
                 var response = await context.Categorias.Where(expression).ToListAsync(token);
                 if(response == null || response.Count == 0)
                 {
-                    return new Result<List<CategoriaEntity>?>(null, 404, "Nenhum dado encontrado.");
+                    return new Result<List<CategoriaEntity>?>(
+                        null, 
+                        404, 
+                        "Nenhum dado encontrado."
+                        );
                 }
 
-                return new Result<List<CategoriaEntity>?>(response, 200, "Dados encontrado.");
+                return new Result<List<CategoriaEntity>?>(
+                    response, 
+                    200, 
+                    "Dados encontrado."
+                    );
             }
             catch (Exception ex)
             {
                 return new Result<List<CategoriaEntity>?>(
                     null, 
                     500, 
-                    $"Erro ao executar a operação (SEARCH). Erro {ex.Message}.");
+                    $"Erro ao executar a operação (SEARCH). Erro {ex.Message}."
+                    );
             }
         }
     #endregion
@@ -134,22 +185,35 @@ public class CategoriaRepository(AppDbContext context) : ICategoriaRepository
             {
                 if(entity == null)
                 {
-                    return new Result<CategoriaEntity>(null, 400, "Parâmetros não podem estar vazio.");
+                    return new Result<CategoriaEntity>(
+                        null, 
+                        400, 
+                        "Parâmetros não podem estar vazio."
+                        );
                 }
                 var response = await context.Categorias.FindAsync(entity.Id);
                 if(response == null)
                 {
-                    return new Result<CategoriaEntity>(null, 404, "ID não encontrado.");
+                    return new Result<CategoriaEntity>(
+                        null, 
+                        404, 
+                        "ID não encontrado."
+                        );
                 }
                 context.Entry(response).CurrentValues.SetValues(entity);
-                return new Result<CategoriaEntity>(response, 200, "Operação executada com sucesso.");
+                return new Result<CategoriaEntity>(
+                    response, 
+                    200, 
+                    "Operação executada com sucesso."
+                    );
             }
             catch (Exception ex)
             {
                 return new Result<CategoriaEntity>(
                     null, 
                     500, 
-                    $"Erro ao executar a operação (UPDATE). Erro {ex.Message}.");
+                    $"Erro ao executar a operação (UPDATE). Erro {ex.Message}."
+                    );
             }
         }
     #endregion
