@@ -1,7 +1,7 @@
 namespace Student.Domain.Entities;
 public sealed class CategoriaEntity: EntityBase, IAgragateRoot
 {
-    public string? Nome { get; private set; }
+    public string Nome { get; private set; } = null!;
 
     [JsonConstructor]
     public CategoriaEntity(){}
