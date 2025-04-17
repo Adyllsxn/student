@@ -11,6 +11,8 @@
 
 #region </Infrastructure>
     global using Student.Infrastructure.Context;
+    global using Student.Infrastructure.Abstractions.DI;
+    global using Student.Infrastructure.Repositories;
 #endregion
 
 #region </Domain>
