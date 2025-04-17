@@ -1,3 +1,22 @@
+#region </System>
+    global using System.Text.Json.Serialization;
+#endregion
 
-using Student.Presentation.Core.Extensions;
-using Microsoft.AspNetCore.Mvc;
+#region </Microsoft>
+    global using Microsoft.AspNetCore.Mvc;
+#endregion
+
+#region </Presentation>
+    global using Student.Presentation.Core.Extensions;
+    global using Student.Presentation.Core.Extensions.Architecture;
+    global using Student.Presentation.Core.Configurations;
+#endregion
+
+#region </Application>
+    global using Student.Application.Abstractions.Interfaces;
+    global using Student.Application.Abstractions.DI;
+#endregion
+
+#region </Infrastructure>
+    global using Student.Infrastructure.Abstractions.DI;
+#endregion

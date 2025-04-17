@@ -1,7 +1,7 @@
 namespace Student.Presentation.Features.Categoria.Controller;
 [ApiController]
 [Route("v1/")]
-public class CategoriasController() : ControllerBase
+public class CategoriasController(ICategoriaService service) : ControllerBase
 {
     
 }
