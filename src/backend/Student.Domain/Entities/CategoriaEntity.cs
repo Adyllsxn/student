@@ -22,7 +22,7 @@ public sealed class CategoriaEntity: EntityBase, IAgragateRoot
     public void ValidationDomain(string nome)
     {
         ValidationException.When(string.IsNullOrWhiteSpace(nome), "Nome é obrigatório.");
-        ValidationException.When(nome.Length >= 50, "Nome deve ter no máximo 60 caracteres.");
+        ValidationException.When(nome.Length >= 50, "Nome deve ter no máximo 50 caracteres.");
 
         Nome = nome;
     }

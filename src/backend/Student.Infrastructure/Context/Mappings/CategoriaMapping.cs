@@ -10,8 +10,8 @@ public class CategoriaMapping : IEntityTypeConfiguration<CategoriaEntity>
                 HasMaxLength(50).
                 HasColumnType("NVARCHAR");
         builder.HasData(
-            new CategoriaEntity(1, "Universitário"),
-            new CategoriaEntity(2, "Normal")
+            new CategoriaEntity(1, "Programação"),
+            new CategoriaEntity(2, "Design")
         );
     }
 }
