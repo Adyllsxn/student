@@ -3,6 +3,8 @@ public sealed class CategoriaEntity: EntityBase, IAgragateRoot
 {
     public string Nome { get; private set; } = null!;
 
+    public ICollection<PostagemEntity> Postagens { get; set; } = new List<PostagemEntity>();
+
     [JsonConstructor]
     public CategoriaEntity(){}
     public CategoriaEntity(int id, string nome)
