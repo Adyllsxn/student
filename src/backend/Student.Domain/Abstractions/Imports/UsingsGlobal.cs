@@ -7,5 +7,6 @@
     global using Student.Domain.Abstractions.Base;
     global using Student.Domain.Abstractions.Exceptions;
     global using Student.Domain.Abstractions.Shared;
+    global using Student.Domain.Abstractions.Pagination;
     global using Student.Domain.Entities;
 #endregion

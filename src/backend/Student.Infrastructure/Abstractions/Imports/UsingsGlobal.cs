@@ -19,4 +19,5 @@
     global using Student.Domain.Entities;
     global using Student.Domain.Abstractions.Interfaces;
     global using Student.Domain.Abstractions.Shared;
+    global using Student.Domain.Abstractions.Pagination;
 #endregion
