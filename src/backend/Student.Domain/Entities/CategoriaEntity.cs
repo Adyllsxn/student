@@ -9,7 +9,7 @@ public sealed class CategoriaEntity: EntityBase, IAgragateRoot
     public CategoriaEntity(){}
     public CategoriaEntity(int id, string nome)
     {
-        ValidationException.When(id <= 0 , "ID deve ser maior que zero.");
+        DomainValidationException.When(id <= 0 , "ID deve ser maior que zero.");
         Id = id;
         ValidationDomain(nome);
     }
@@ -23,8 +23,8 @@ public sealed class CategoriaEntity: EntityBase, IAgragateRoot
     }
     public void ValidationDomain(string nome)
     {
-        ValidationException.When(string.IsNullOrWhiteSpace(nome), "Nome é obrigatório.");
-        ValidationException.When(nome.Length >= 50, "Nome deve ter no máximo 50 caracteres.");
+        DomainValidationException.When(string.IsNullOrWhiteSpace(nome), "Nome é obrigatório.");
+        DomainValidationException.When(nome.Length > 50, "Nome deve ter no máximo 50 caracteres.");
 
         Nome = nome;
     }
