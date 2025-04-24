@@ -55,7 +55,11 @@ public class CategoriaRepository(AppDbContext context) : ICategoriaRepository
                         );
                 }
                 context.Categorias.Remove(response);
-                return new Result<bool>(true, 200, "Operação executada com sucesso.");
+                return new Result<bool>(
+                    true, 
+                    200, 
+                    "Operação executada com sucesso."
+                    );
             }
             catch (Exception ex)
             {
