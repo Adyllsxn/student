@@ -14,7 +14,7 @@ public class PostagemEntity: EntityBase, IAgragateRoot
 
     public PostagemEntity(int id, string titulo, DateTime data, string imagem, int categoriaId)
     {
-        ValidationException.When(id <= 0 , "ID deve ser maior que zero.");
+        DomainValidationException.When(id <= 0 , "ID deve ser maior que zero.");
         Id = id;
         ValidationDomain(titulo, data, imagem, categoriaId);
     }
@@ -28,13 +28,13 @@ public class PostagemEntity: EntityBase, IAgragateRoot
     }
     public void ValidationDomain(string titulo, DateTime data, string imagem, int categoriaId)
     {
-        ValidationException.When(string.IsNullOrWhiteSpace(titulo), "Título é obrigatório.");
-        ValidationException.When(titulo.Length >= 50, "Título deve ter no máximo 50 caracteres.");
+        DomainValidationException.When(string.IsNullOrWhiteSpace(titulo), "Título é obrigatório.");
+        DomainValidationException.When(titulo.Length >= 50, "Título deve ter no máximo 50 caracteres.");
 
-        ValidationException.When(string.IsNullOrWhiteSpace(imagem), "Imagem é obrigatório.");
-        ValidationException.When(imagem.Length < 1, "Imagem deve ter no mínimo 1 caractere.");
+        DomainValidationException.When(string.IsNullOrWhiteSpace(imagem), "Imagem é obrigatório.");
+        DomainValidationException.When(imagem.Length < 1, "Imagem deve ter no mínimo 1 caractere.");
 
-        ValidationException.When(categoriaId <= 0 , "ID da categoria deve ser maior que zero.");
+        DomainValidationException.When(categoriaId <= 0 , "ID da categoria deve ser maior que zero.");
 
         Titulo = titulo;
         Data = data;
