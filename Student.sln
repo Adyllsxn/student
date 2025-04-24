@@ -19,15 +19,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{AC0B3D8C-E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student.UnitTest", "test\Student.UnitTest\Student.UnitTest.csproj", "{5FDBFCB4-96BA-45D3-8A1C-B8B951BC5321}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student.IntegrationTest", "test\Student.IntegrationTest\Student.IntegrationTest.csproj", "{393D62BA-D045-4B4F-AD72-CA42D2DDD11C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9A53AB92-0A70-4709-832F-02959333CAE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -50,10 +45,9 @@ Global
 		{5FDBFCB4-96BA-45D3-8A1C-B8B951BC5321}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FDBFCB4-96BA-45D3-8A1C-B8B951BC5321}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FDBFCB4-96BA-45D3-8A1C-B8B951BC5321}.Release|Any CPU.Build.0 = Release|Any CPU
-		{393D62BA-D045-4B4F-AD72-CA42D2DDD11C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{393D62BA-D045-4B4F-AD72-CA42D2DDD11C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{393D62BA-D045-4B4F-AD72-CA42D2DDD11C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{393D62BA-D045-4B4F-AD72-CA42D2DDD11C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BADFAF7F-517E-4D7D-A710-49F702C06BB9} = {52FC9F48-47D5-4448-936A-7FE7AF5525B8}
@@ -62,6 +56,5 @@ Global
 		{DC8047CB-D63A-40E3-BD1C-ED4EB024C0FA} = {BADFAF7F-517E-4D7D-A710-49F702C06BB9}
 		{6A3450F2-CDC1-49D8-9792-F6375CE80AC4} = {BADFAF7F-517E-4D7D-A710-49F702C06BB9}
 		{5FDBFCB4-96BA-45D3-8A1C-B8B951BC5321} = {AC0B3D8C-EC89-413C-AAE2-526E11A76B29}
-		{393D62BA-D045-4B4F-AD72-CA42D2DDD11C} = {AC0B3D8C-EC89-413C-AAE2-526E11A76B29}
 	EndGlobalSection
 EndGlobal
