@@ -10,6 +10,7 @@
     global using Student.Presentation.Core.Extensions;
     global using Student.Presentation.Core.Extensions.Architecture;
     global using Student.Presentation.Core.Configurations;
+    global using Student.Presentation.Features.Postagem.Model;
 #endregion
 
 #region </Application>
@@ -20,6 +21,7 @@
     global using Student.Application.UseCases.Categoria.GetById;
     global using Student.Application.UseCases.Categoria.Search;
     global using Student.Application.UseCases.Categoria.Update;
+    global using Student.Application.UseCases.Postagem.Create;
 #endregion
 
 #region </Infrastructure>
