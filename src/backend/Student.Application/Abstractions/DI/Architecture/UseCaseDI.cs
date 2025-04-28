@@ -16,6 +16,7 @@ public static class UseCaseDI
             services.AddScoped<CreatePostagemHandler>();
             services.AddScoped<GetFilePostagemHandler>();
             services.AddScoped<GetPostagemByIdHandler>();
+            services.AddScoped<DeletePostagemHandler>();
         #endregion
     }
 }
