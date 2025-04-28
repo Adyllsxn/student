@@ -1,8 +1,25 @@
+using Student.Application.UseCases.Postagem.GetFile;
+
 namespace Student.Presentation.Features.Postagem.Controller;
 [ApiController]
 [Route("v1/")]
 public class PostagensController(IPostagemService service) : ControllerBase
 {
+    #region </GetFile>
+        [HttpGet("PostagemFile"), EndpointSummary("Obter a imagem da postagem Pelo Id")]
+        public async Task<IActionResult> GetFileAsync([FromQuery] GetFilePostagemCommand command, CancellationToken token)
+        {
+            try{
+                var response = await service.GetFileHandler(command,token);
+                var databyte = System.IO.File.ReadAllBytes(response.Data.Imagem);
+                return File(databyte, "image/jpg");
+            }
+            catch{
+                return Problem("Erro ao obter a imagem!");
+            }
+        }
+    #endregion
+
     #region </Create>
         [HttpPost("CreatePostagem"), EndpointSummary("Criar Postagem")]
         public async Task<IActionResult> CreateAsync([FromForm] PostagemModel model, CancellationToken token)
