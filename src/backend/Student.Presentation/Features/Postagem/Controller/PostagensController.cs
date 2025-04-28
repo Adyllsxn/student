@@ -1,10 +1,17 @@
-using Student.Application.UseCases.Postagem.GetFile;
-
 namespace Student.Presentation.Features.Postagem.Controller;
 [ApiController]
 [Route("v1/")]
 public class PostagensController(IPostagemService service) : ControllerBase
 {
+    #region </GetById>
+        [HttpGet("PostagemById"), EndpointSummary("Obter Postagem Pelo Id")]
+        public async Task<IActionResult> GetByIdAsync([FromQuery] GetPostagemByIdCommand command, CancellationToken token)
+        {
+            var response = await service.GetByIdHandler(command,token);
+            return Ok(response);
+        }
+    #endregion
+
     #region </GetFile>
         [HttpGet("PostagemFile"), EndpointSummary("Obter a imagem da postagem Pelo Id")]
         public async Task<IActionResult> GetFileAsync([FromQuery] GetFilePostagemCommand command, CancellationToken token)
