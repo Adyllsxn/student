@@ -13,6 +13,8 @@
     global using Student.Application.Services;
     global using Student.Application.MethodExtensions.Categoria;
     global using Student.Application.MethodExtensions.Postagem;
+    global using Student.Application.MethodExtensions.Dashboard;
+    global using Student.Application.UseCases.Dashboard;
     global using Student.Application.UseCases.Categoria.Create;    
     global using Student.Application.UseCases.Categoria.GetAll;
     global using Student.Application.UseCases.Categoria.Delete;
