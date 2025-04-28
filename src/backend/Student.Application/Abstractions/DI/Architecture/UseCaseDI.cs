@@ -11,5 +11,9 @@ public static class UseCaseDI
             services.AddScoped<SearchCategoriaHandler>();
             services.AddScoped<UpdateCategoriaHandler>();
         #endregion
+
+        #region </Postagem>
+            services.AddScoped<CreatePostagemHandler>();
+        #endregion
     }
 }
