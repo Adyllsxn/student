@@ -1,5 +1,5 @@
 namespace Student.Application.UseCases.Postagem.Delete;
-public class DeletePostagemHandler(ICategoriaRepository repository, IUnitOfWork unitOfWork)
+public class DeletePostagemHandler(IPostagemRepository repository, IUnitOfWork unitOfWork)
 {
     public async Task<Result<bool>> DeleteHandler(DeletePostagemCommand command, CancellationToken token)
     {
