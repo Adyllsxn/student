@@ -65,4 +65,22 @@ public class PostagensController(IPostagemService service) : ControllerBase
             return Ok(response);
         }
     #endregion
+
+    #region </Delete>
+        [HttpDelete("DeletePostagem"), EndpointSummary("Excluir Postagem")]
+        public async Task<IActionResult> DeleteAsync(DeletePostagemCommand command, CancellationToken token)
+        {
+            var delete = new GetPostagemByIdCommand{Id = command.Id};
+            var result = await service.GetByIdHandler(delete, token);
+            if (!string.IsNullOrEmpty(result.Data?.Imagem) && System.IO.File.Exists(result.Data.Imagem))
+            {
+                System.IO.File.Delete(result.Data.Imagem);
+            }
+
+            var response = await service.DeleteHandler(command,token);
+            return Ok(response);
+        }
+    #endregion
+
+
 }

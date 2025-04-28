@@ -3,6 +3,10 @@ public static class UseCaseDI
 {
     public static void AddUseCaseDI (this IServiceCollection services)
     {
+        #region </Dashboard>
+            services.AddScoped<GetDashboardHandler>();
+        #endregion
+
         #region </Categoria>
             services.AddScoped<CreateCategoriaHendler>();
             services.AddScoped<DeleteCategoriaHandler>();
