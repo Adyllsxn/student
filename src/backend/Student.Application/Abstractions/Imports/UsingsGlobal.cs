@@ -1,5 +1,6 @@
 #region <System>
     global using System.ComponentModel.DataAnnotations;
+    global using System.Text.Json.Serialization;
 #endregion
 
 #region </Microsoft>
@@ -11,12 +12,14 @@
     global using Student.Application.Abstractions.Interfaces;
     global using Student.Application.Services;
     global using Student.Application.MethodExtensions.Categoria;
+    global using Student.Application.MethodExtensions.Postagem;
     global using Student.Application.UseCases.Categoria.Create;    
     global using Student.Application.UseCases.Categoria.GetAll;
     global using Student.Application.UseCases.Categoria.Delete;
     global using Student.Application.UseCases.Categoria.GetById;
     global using Student.Application.UseCases.Categoria.Search;
     global using Student.Application.UseCases.Categoria.Update;
+    global using Student.Application.UseCases.Postagem.Create;
 #endregion
 
 #region </Domain>
