@@ -1,13 +1,13 @@
-namespace Student.Application.UseCases.Categoria.GetById;
-public class GetCategoriaByIdHandler(ICategoriaRepository repository)
+namespace Student.Application.UseCases.Postagem.GetById;
+public class GetPostagemByIdHandler(IPostagemRepository repository)
 {
-    public async Task<Result<GetCategoriaByIdResponse>> GetByIdHandler(GetCategoriaByIdCommand command, CancellationToken token)
+    public async Task<Result<GetPostagemByIdResponse>> GetByIdHandler(GetPostagemByIdCommand command, CancellationToken token)
     {
         try
         {
             if(command.Id <= 0)
             {
-                return new Result<GetCategoriaByIdResponse>(
+                return new Result<GetPostagemByIdResponse>(
                     null,
                     400,
                     "ID deve ser maior que zero."
@@ -16,15 +16,15 @@ public class GetCategoriaByIdHandler(ICategoriaRepository repository)
             var response = await repository.GetByIdAsync(command.Id, token);
             if (response.Data == null)
             {
-                return new Result<GetCategoriaByIdResponse>(
+                return new Result<GetPostagemByIdResponse>(
                     null, 
                     404, 
                     "Nenhum dado encontrado"
                     );
             }
-            var result = response.Data.MapToGetCategoriaById();
+            var result = response.Data.MapToGetPostagemById();
             
-            return new Result<GetCategoriaByIdResponse>(
+            return new Result<GetPostagemByIdResponse>(
                 result, 
                 200, 
                 "Dados encontrados"
@@ -32,7 +32,7 @@ public class GetCategoriaByIdHandler(ICategoriaRepository repository)
         }
         catch(Exception ex)
         {
-            return new Result<GetCategoriaByIdResponse>(
+            return new Result<GetPostagemByIdResponse>(
                 null, 
                 500, 
                 $"Erro ao manipular a operação (GET BY ID). Erro: {ex.Message}"

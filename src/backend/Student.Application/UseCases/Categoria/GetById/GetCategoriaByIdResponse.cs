@@ -1,5 +1,5 @@
 namespace Student.Application.UseCases.Categoria.GetById;
-public record GetCAtegoriaByIdResponse
+public record GetCategoriaByIdResponse
 {
     public int Id { get; set; }
 

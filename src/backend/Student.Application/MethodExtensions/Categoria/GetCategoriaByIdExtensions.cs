@@ -1,15 +1,15 @@
 namespace Student.Application.MethodExtensions.Categoria;
 public static class GetCategoriaByIdExtensions
 {
-    public static GetCAtegoriaByIdResponse MapToGetCategoriaById (this CategoriaEntity entity)
+    public static GetCategoriaByIdResponse MapToGetCategoriaById (this CategoriaEntity entity)
     {
-        return new GetCAtegoriaByIdResponse
+        return new GetCategoriaByIdResponse
         {
             Id = entity.Id,
             Nome = entity.Nome
         };
     }
-    public static IEnumerable<GetCAtegoriaByIdResponse> MapToGetCategoriaById(this IEnumerable<CategoriaEntity> response)
+    public static IEnumerable<GetCategoriaByIdResponse> MapToGetCategoriaById(this IEnumerable<CategoriaEntity> response)
     {
         return response.Select(entity => entity.MapToGetCategoriaById());
     }

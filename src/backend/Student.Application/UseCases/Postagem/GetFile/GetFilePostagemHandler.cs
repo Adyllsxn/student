@@ -35,7 +35,7 @@ public class GetFilePostagemHandler(IPostagemRepository repository)
             return new Result<GetFilePostagemResponse>(
                 null, 
                 500, 
-                $"Erro ao manipular a operação (GET BY ID). Erro: {ex.Message}"
+                $"Erro ao manipular a operação (GET FILE). Erro: {ex.Message}"
                 );
         }
     }
