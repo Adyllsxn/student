@@ -22,6 +22,9 @@
     global using Student.Application.UseCases.Categoria.Search;
     global using Student.Application.UseCases.Categoria.Update;
     global using Student.Application.UseCases.Postagem.Create;
+    global using Student.Application.UseCases.Postagem.GetById;
+    global using Student.Application.UseCases.Postagem.GetFile;
+    global using Student.Application.UseCases.Postagem.Delete;
 #endregion
 
 #region </Infrastructure>

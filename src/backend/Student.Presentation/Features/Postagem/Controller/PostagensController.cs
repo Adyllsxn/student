@@ -3,6 +3,30 @@ namespace Student.Presentation.Features.Postagem.Controller;
 [Route("v1/")]
 public class PostagensController(IPostagemService service) : ControllerBase
 {
+    #region </GetById>
+        [HttpGet("PostagemById"), EndpointSummary("Obter Postagem Pelo Id")]
+        public async Task<IActionResult> GetByIdAsync([FromQuery] GetPostagemByIdCommand command, CancellationToken token)
+        {
+            var response = await service.GetByIdHandler(command,token);
+            return Ok(response);
+        }
+    #endregion
+
+    #region </GetFile>
+        [HttpGet("PostagemFile"), EndpointSummary("Obter a imagem da postagem Pelo Id")]
+        public async Task<IActionResult> GetFileAsync([FromQuery] GetFilePostagemCommand command, CancellationToken token)
+        {
+            try{
+                var response = await service.GetFileHandler(command,token);
+                var databyte = System.IO.File.ReadAllBytes(response.Data.Imagem);
+                return File(databyte, "image/jpg");
+            }
+            catch{
+                return Problem("Erro ao obter a imagem!");
+            }
+        }
+    #endregion
+
     #region </Create>
         [HttpPost("CreatePostagem"), EndpointSummary("Criar Postagem")]
         public async Task<IActionResult> CreateAsync([FromForm] PostagemModel model, CancellationToken token)
@@ -41,4 +65,22 @@ public class PostagensController(IPostagemService service) : ControllerBase
             return Ok(response);
         }
     #endregion
+
+    #region </Delete>
+        [HttpDelete("DeletePostagem"), EndpointSummary("Excluir Postagem")]
+        public async Task<IActionResult> DeleteAsync(DeletePostagemCommand command, CancellationToken token)
+        {
+            var delete = new GetPostagemByIdCommand{Id = command.Id};
+            var result = await service.GetByIdHandler(delete, token);
+            if (!string.IsNullOrEmpty(result.Data?.Imagem) && System.IO.File.Exists(result.Data.Imagem))
+            {
+                System.IO.File.Delete(result.Data.Imagem);
+            }
+
+            var response = await service.DeleteHandler(command,token);
+            return Ok(response);
+        }
+    #endregion
+
+
 }

@@ -11,7 +11,7 @@ public class CategoriaService(CreateCategoriaHendler create, DeleteCategoriaHand
         return await delete.DeleteHandler(command, token);
     }
 
-    public async Task<Result<GetCAtegoriaByIdResponse>> GetByIdHandler(GetCategoriaByIdCommand command, CancellationToken token)
+    public async Task<Result<GetCategoriaByIdResponse>> GetByIdHandler(GetCategoriaByIdCommand command, CancellationToken token)
     {
         return await getbyid.GetByIdHandler(command, token);
     }

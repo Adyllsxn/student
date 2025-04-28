@@ -12,7 +12,7 @@ using Student.Infrastructure.Context;
 namespace Student.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250424145218_CreateMigration")]
+    [Migration("20250428141057_CreateMigration")]
     partial class CreateMigration
     {
         /// <inheritdoc />
