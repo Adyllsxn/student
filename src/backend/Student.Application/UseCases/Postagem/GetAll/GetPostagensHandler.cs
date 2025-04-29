@@ -1,7 +1,7 @@
 namespace Student.Application.UseCases.Postagem.GetAll;
 public class GetPostagensHandler(IPostagemRepository repository)
 {
-    public async Task<PagedList<List<GetPostagensResponse>?>> GetAllAsync(PagedRequest request, CancellationToken token)
+    public async Task<PagedList<List<GetPostagensResponse>?>> GetHandler(PagedRequest request, CancellationToken token)
     {
         try
         {

@@ -30,3 +30,7 @@
 #region </Infrastructure>
     global using Student.Infrastructure.Abstractions.DI;
 #endregion
+
+#region </Domain>
+    global using Student.Domain.Abstractions.Pagination;
+#endregion

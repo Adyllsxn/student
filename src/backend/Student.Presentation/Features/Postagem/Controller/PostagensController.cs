@@ -3,6 +3,16 @@ namespace Student.Presentation.Features.Postagem.Controller;
 [Route("v1/")]
 public class PostagensController(IPostagemService service) : ControllerBase
 {
+
+    #region </GetAll>
+        [HttpGet("Postagens"), EndpointSummary("Obter Postagens")]
+        public async Task<IActionResult> GetAllAsync([FromQuery] PagedRequest request,CancellationToken token)
+        {
+            var response = await service.GetHandler(request,token);
+            return Ok(response);
+        }
+    #endregion
+
     #region </GetById>
         [HttpGet("PostagemById"), EndpointSummary("Obter Postagem Pelo Id")]
         public async Task<IActionResult> GetByIdAsync([FromQuery] GetPostagemByIdCommand command, CancellationToken token)
@@ -81,6 +91,5 @@ public class PostagensController(IPostagemService service) : ControllerBase
             return Ok(response);
         }
     #endregion
-
 
 }
