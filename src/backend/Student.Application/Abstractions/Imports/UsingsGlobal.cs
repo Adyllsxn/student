@@ -27,6 +27,7 @@
     global using Student.Application.UseCases.Postagem.GetAll;
     global using Student.Application.UseCases.Postagem.Delete;
     global using Student.Application.UseCases.Postagem.Search;
+    global using Student.Application.UseCases.Postagem.Update;
 #endregion
 
 #region </Domain>

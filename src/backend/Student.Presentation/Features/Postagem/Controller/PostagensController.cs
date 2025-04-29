@@ -101,4 +101,13 @@ public class PostagensController(IPostagemService service) : ControllerBase
         }
     #endregion
 
+    #region </Update>
+        [HttpPut("UpdatePostagem"), EndpointSummary("Editar Postagem")]
+        public async Task<IActionResult> UpdateAsync([FromForm] UpdatePostagemCommand command, CancellationToken token)
+        {
+            var response = await service.UpdateHendler(command,token);
+            return Ok(response);
+        }
+    #endregion
+
 }
