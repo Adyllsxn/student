@@ -24,13 +24,10 @@
     global using Student.Application.UseCases.Postagem.Create;
     global using Student.Application.UseCases.Postagem.GetById;
     global using Student.Application.UseCases.Postagem.GetFile;
+    global using Student.Application.UseCases.Postagem.GetAll;
     global using Student.Application.UseCases.Postagem.Delete;
 #endregion
 
 #region </Infrastructure>
     global using Student.Infrastructure.Abstractions.DI;
-#endregion
-
-#region </Domain>
-    global using Student.Domain.Abstractions.Pagination;
 #endregion

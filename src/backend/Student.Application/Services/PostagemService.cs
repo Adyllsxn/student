@@ -11,9 +11,9 @@ public class PostagemService(CreatePostagemHandler create, GetFilePostagemHandle
         return await delete.DeleteHandler(command, token);
     }
 
-    public async Task<PagedList<List<GetPostagensResponse>?>> GetHandler(PagedRequest request, CancellationToken token)
+    public async Task<PagedList<List<GetPostagensResponse>?>> GetHandler(GetPostagensCommand command, CancellationToken token)
     {
-        return await get.GetHandler(request, token);
+        return await get.GetHandler(command, token);
     }
 
     public async Task<Result<GetPostagemByIdResponse>> GetByIdHandler(GetPostagemByIdCommand command, CancellationToken token)

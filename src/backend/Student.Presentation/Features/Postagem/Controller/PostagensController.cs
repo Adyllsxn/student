@@ -6,9 +6,9 @@ public class PostagensController(IPostagemService service) : ControllerBase
 
     #region </GetAll>
         [HttpGet("Postagens"), EndpointSummary("Obter Postagens")]
-        public async Task<IActionResult> GetAllAsync([FromQuery] PagedRequest request,CancellationToken token)
+        public async Task<IActionResult> GetAllAsync([FromQuery] GetPostagensCommand command,CancellationToken token)
         {
-            var response = await service.GetHandler(request,token);
+            var response = await service.GetHandler(command,token);
             return Ok(response);
         }
     #endregion
