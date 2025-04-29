@@ -3,6 +3,16 @@ namespace Student.Presentation.Features.Postagem.Controller;
 [Route("v1/")]
 public class PostagensController(IPostagemService service) : ControllerBase
 {
+
+    #region </GetAll>
+        [HttpGet("Postagens"), EndpointSummary("Obter Postagens")]
+        public async Task<IActionResult> GetAllAsync([FromQuery] GetPostagensCommand command,CancellationToken token)
+        {
+            var response = await service.GetHandler(command,token);
+            return Ok(response);
+        }
+    #endregion
+
     #region </GetById>
         [HttpGet("PostagemById"), EndpointSummary("Obter Postagem Pelo Id")]
         public async Task<IActionResult> GetByIdAsync([FromQuery] GetPostagemByIdCommand command, CancellationToken token)
@@ -24,6 +34,15 @@ public class PostagensController(IPostagemService service) : ControllerBase
             catch{
                 return Problem("Erro ao obter a imagem!");
             }
+        }
+    #endregion
+
+    #region </Search>
+        [HttpGet("SearchPostagem"), EndpointSummary("Pesquisar Postagem")]
+        public async Task<IActionResult> SearchAsync([FromQuery] SearchPostagemCommand command, CancellationToken token)
+        {
+            var response = await service.SearchHendler(command,token);
+            return Ok(response);
         }
     #endregion
 
@@ -82,5 +101,13 @@ public class PostagensController(IPostagemService service) : ControllerBase
         }
     #endregion
 
+    #region </Update>
+        [HttpPut("UpdatePostagem"), EndpointSummary("Editar Postagem")]
+        public async Task<IActionResult> UpdateAsync([FromForm] UpdatePostagemCommand command, CancellationToken token)
+        {
+            var response = await service.UpdateHendler(command,token);
+            return Ok(response);
+        }
+    #endregion
 
 }

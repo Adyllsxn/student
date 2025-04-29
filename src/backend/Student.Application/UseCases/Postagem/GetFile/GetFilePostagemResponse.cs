@@ -1,5 +1,5 @@
 namespace Student.Application.UseCases.Postagem.GetFile;
-public class GetFilePostagemResponse
+public record GetFilePostagemResponse
 {
     [Key]
     public int Id { get; set; }

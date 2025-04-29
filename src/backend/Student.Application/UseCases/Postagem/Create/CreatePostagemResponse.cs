@@ -1,5 +1,5 @@
 namespace Student.Application.UseCases.Postagem.Create;
-public class CreatePostagemResponse
+public record CreatePostagemResponse
 {
     [Key]
     public int Id { get; set; }

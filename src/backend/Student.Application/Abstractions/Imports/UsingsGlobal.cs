@@ -24,11 +24,15 @@
     global using Student.Application.UseCases.Postagem.Create;
     global using Student.Application.UseCases.Postagem.GetFile;
     global using Student.Application.UseCases.Postagem.GetById;
+    global using Student.Application.UseCases.Postagem.GetAll;
     global using Student.Application.UseCases.Postagem.Delete;
+    global using Student.Application.UseCases.Postagem.Search;
+    global using Student.Application.UseCases.Postagem.Update;
 #endregion
 
 #region </Domain>
     global using Student.Domain.Abstractions.Interfaces;
     global using Student.Domain.Abstractions.Shared;
+    global using Student.Domain.Abstractions.Pagination;
     global using Student.Domain.Entities;
 #endregion

@@ -1,5 +1,5 @@
-namespace Student.Application.UseCases.Postagem.GetById;
-public record GetPostagemByIdResponse
+namespace Student.Application.UseCases.Postagem.Update;
+public record UpdatePostagemCommand
 {
     [Key]
     public int Id { get; set; }
@@ -8,6 +8,7 @@ public record GetPostagemByIdResponse
     [MaxLength(50, ErrorMessage = "Título deve ter no máximo 50 caracteres.")]
     public string Titulo { get; set; } = null!;
 
+    [JsonIgnore]
     public DateTime Data { get; set; } = DateTime.UtcNow;
 
     [Required(ErrorMessage = "Imagem é obrigatório")]
@@ -16,5 +17,4 @@ public record GetPostagemByIdResponse
 
     [Required(ErrorMessage = "ID da categoria deve ser maior que zero.")]
     public int CategoriaId { get; set; }
-
 }

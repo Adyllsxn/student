@@ -20,7 +20,10 @@ public static class UseCaseDI
             services.AddScoped<CreatePostagemHandler>();
             services.AddScoped<GetFilePostagemHandler>();
             services.AddScoped<GetPostagemByIdHandler>();
+            services.AddScoped<GetPostagensHandler>();
             services.AddScoped<DeletePostagemHandler>();
+            services.AddScoped<SearchPostagemHandler>();
+            services.AddScoped<UpdatePostagemHandler>();
         #endregion
     }
 }

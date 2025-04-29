@@ -1,5 +1,5 @@
-namespace Student.Application.UseCases.Postagem.GetById;
-public record GetPostagemByIdResponse
+namespace Student.Application.UseCases.Postagem.Update;
+public record UpdatePostagemResponse
 {
     [Key]
     public int Id { get; set; }
@@ -16,5 +16,4 @@ public record GetPostagemByIdResponse
 
     [Required(ErrorMessage = "ID da categoria deve ser maior que zero.")]
     public int CategoriaId { get; set; }
-
 }
