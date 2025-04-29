@@ -1,5 +1,5 @@
 namespace Student.Application.Services;
-public class PostagemService(CreatePostagemHandler create, GetFilePostagemHandler getFile, GetPostagemByIdHandler getById, DeletePostagemHandler delete) : IPostagemService
+public class PostagemService(CreatePostagemHandler create, GetFilePostagemHandler getFile, GetPostagemByIdHandler getById, DeletePostagemHandler delete, GetPostagensHandler get) : IPostagemService
 {
     public async Task<Result<CreatePostagemResponse>> CreateHandler(CreatePostagemCommand command, CancellationToken token)
     {
@@ -9,6 +9,11 @@ public class PostagemService(CreatePostagemHandler create, GetFilePostagemHandle
     public async Task<Result<bool>> DeleteHandler(DeletePostagemCommand command, CancellationToken token)
     {
         return await delete.DeleteHandler(command, token);
+    }
+
+    public async Task<PagedList<List<GetPostagensResponse>?>> GetAllAsync(PagedRequest request, CancellationToken token)
+    {
+        return await get.GetAllAsync(request, token);
     }
 
     public async Task<Result<GetPostagemByIdResponse>> GetByIdHandler(GetPostagemByIdCommand command, CancellationToken token)
