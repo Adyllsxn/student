@@ -37,6 +37,15 @@ public class PostagensController(IPostagemService service) : ControllerBase
         }
     #endregion
 
+    #region </Search>
+        [HttpGet("SearchPostagem"), EndpointSummary("Pesquisar Postagem")]
+        public async Task<IActionResult> SearchAsync([FromQuery] SearchPostagemCommand command, CancellationToken token)
+        {
+            var response = await service.SearchHendler(command,token);
+            return Ok(response);
+        }
+    #endregion
+
     #region </Create>
         [HttpPost("CreatePostagem"), EndpointSummary("Criar Postagem")]
         public async Task<IActionResult> CreateAsync([FromForm] PostagemModel model, CancellationToken token)

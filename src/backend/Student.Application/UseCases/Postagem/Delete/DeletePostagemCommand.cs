@@ -1,5 +1,5 @@
 namespace Student.Application.UseCases.Postagem.Delete;
-public class DeletePostagemCommand
+public record DeletePostagemCommand
 {
     public int Id { get; set; }
 }

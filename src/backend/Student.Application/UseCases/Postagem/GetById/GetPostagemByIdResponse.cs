@@ -1,5 +1,5 @@
 namespace Student.Application.UseCases.Postagem.GetById;
-public class GetPostagemByIdResponse
+public record GetPostagemByIdResponse
 {
     [Key]
     public int Id { get; set; }

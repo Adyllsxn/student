@@ -1,5 +1,5 @@
 namespace Student.Application.Services;
-public class PostagemService(CreatePostagemHandler create, GetFilePostagemHandler getFile, GetPostagemByIdHandler getById, DeletePostagemHandler delete, GetPostagensHandler get) : IPostagemService
+public class PostagemService(CreatePostagemHandler create, GetFilePostagemHandler getFile, GetPostagemByIdHandler getById, DeletePostagemHandler delete, GetPostagensHandler get, SearchPostagemHandler search) : IPostagemService
 {
     public async Task<Result<CreatePostagemResponse>> CreateHandler(CreatePostagemCommand command, CancellationToken token)
     {
@@ -24,5 +24,10 @@ public class PostagemService(CreatePostagemHandler create, GetFilePostagemHandle
     public async Task<Result<GetFilePostagemResponse>> GetFileHandler(GetFilePostagemCommand command, CancellationToken token)
     {
         return await getFile.GetFileHandler(command, token);
+    }
+
+    public async Task<Result<List<SearchPostagemResponse>>> SearchHendler(SearchPostagemCommand command, CancellationToken token)
+    {
+        return await search.SearchHendler(command, token);
     }
 }

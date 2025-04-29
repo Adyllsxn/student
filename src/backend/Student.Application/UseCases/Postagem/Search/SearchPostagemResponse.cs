@@ -1,5 +1,5 @@
-namespace Student.Application.UseCases.Postagem.GetAll;
-public record GetPostagensResponse
+namespace Student.Application.UseCases.Postagem.Search;
+public record SearchPostagemResponse
 {
     [Key]
     public int Id { get; set; }
@@ -16,5 +16,4 @@ public record GetPostagensResponse
 
     [Required(ErrorMessage = "ID da categoria deve ser maior que zero.")]
     public int CategoriaId { get; set; }
-
 }

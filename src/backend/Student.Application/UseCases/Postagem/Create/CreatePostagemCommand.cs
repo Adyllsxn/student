@@ -1,5 +1,5 @@
 namespace Student.Application.UseCases.Postagem.Create;
-public class CreatePostagemCommand
+public record CreatePostagemCommand
 {
     [Required(ErrorMessage = "O Título é obrigatório")]
     [MaxLength(50, ErrorMessage = "Título deve ter no máximo 50 caracteres.")]
