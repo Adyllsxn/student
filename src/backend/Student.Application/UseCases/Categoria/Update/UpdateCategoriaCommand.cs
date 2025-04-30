@@ -1,6 +1,7 @@
 namespace Student.Application.UseCases.Categoria.Update;
 public record UpdateCategoriaCommand
 {
+    [Required]
     public int Id { get; set; }
 
     [Required]

@@ -10,6 +10,7 @@
 #region </Application>
     global using Student.Application.Abstractions.DI.Architecture;
     global using Student.Application.Abstractions.Interfaces;
+    global using Student.Application.Abstractions.Resposnse;
     global using Student.Application.Services;
     global using Student.Application.MethodExtensions.Categoria;
     global using Student.Application.MethodExtensions.Postagem;

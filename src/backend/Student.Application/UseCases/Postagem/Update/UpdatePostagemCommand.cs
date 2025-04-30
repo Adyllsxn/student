@@ -1,7 +1,7 @@
 namespace Student.Application.UseCases.Postagem.Update;
 public record UpdatePostagemCommand
 {
-    [Key]
+    [Required]
     public int Id { get; set; }
 
     [Required(ErrorMessage = "O Título é obrigatório")]
