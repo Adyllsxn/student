@@ -3,7 +3,45 @@ public static class SwaggerExtensions
 {
     public static void AddSwaggerExtensions(this WebApplicationBuilder builder)
     {
-        builder.Services.AddSwaggerGen();
+        builder.Services.AddSwaggerGen(
+            c =>
+            {
+                #region </SwaggerDoc>
+                    c.SwaggerDoc("v1", new OpenApiInfo{
+                        Title = "Student.API",
+                        Version = "v1",
+                        Description = "API da plataforma student, um sistema de publicação de conteudos académicos"
+                    });
+                #endregion
+
+                #region </SecurityDefinition>
+                    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme{
+                        Name = "Authorization",
+                        Type = SecuritySchemeType.ApiKey,
+                        BearerFormat = "JWT",
+                        In = ParameterLocation.Header,
+                        Description = "Insiera o token para se autenticar"
+                    });
+                #endregion
+
+                #region </SecurityRequirement>
+                    c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                    {
+                        {
+                            new OpenApiSecurityScheme()
+                            {
+                                Reference = new OpenApiReference()
+                                {
+                                    Type = ReferenceType.SecurityScheme,
+                                    Id = "Bearer"
+                                }
+                            },
+                            new string []{}
+                        }
+                    });
+                #endregion
+            }
+        );
     }
 
     public static void UseSweggerExtensions(this WebApplication app)

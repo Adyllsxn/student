@@ -4,6 +4,7 @@
 
 #region </Microsoft>
     global using Microsoft.AspNetCore.Mvc;
+    global using Microsoft.OpenApi.Models;
 #endregion
 
 #region </Presentation>
