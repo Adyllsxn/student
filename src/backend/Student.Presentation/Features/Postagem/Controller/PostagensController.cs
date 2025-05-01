@@ -28,6 +28,10 @@ public class PostagensController(IPostagemService service) : ControllerBase
         {
             try{
                 var response = await service.GetFileHandler(command,token);
+                if(response.Data?.Imagem == null)
+                {
+                    return BadRequest("Imagem não encontrada");
+                }
                 var databyte = System.IO.File.ReadAllBytes(response.Data.Imagem);
                 return File(databyte, "image/jpg");
             }
@@ -48,7 +52,7 @@ public class PostagensController(IPostagemService service) : ControllerBase
 
     #region </Create>
         [HttpPost("CreatePostagem"), EndpointSummary("Criar Postagem")]
-        public async Task<IActionResult> CreateAsync([FromForm] PostagemModel model, CancellationToken token)
+        public async Task<IActionResult> CreateAsync([FromForm] CreatePostagemModel model, CancellationToken token)
         {
             if (model.Imagem == null || model.Imagem.Length == 0)
             {
@@ -103,11 +107,49 @@ public class PostagensController(IPostagemService service) : ControllerBase
 
     #region </Update>
         [HttpPut("UpdatePostagem"), EndpointSummary("Editar Postagem")]
-        public async Task<IActionResult> UpdateAsync([FromForm] UpdatePostagemCommand command, CancellationToken token)
+        public async Task<IActionResult> UpdateAsync([FromForm] UpdatePostagemModel model, CancellationToken token)
         {
-            var response = await service.UpdateHendler(command,token);
+            var getCommand = new GetPostagemByIdCommand { Id = model.Id };
+            var result = await service.GetByIdHandler(getCommand, token);
+
+            if (result.Data is null)
+                return NotFound("Postagem não encontrada.");
+
+            string caminhoAntigo = result.Data.Imagem;
+            string caminhoNovo = caminhoAntigo;
+
+            if (model.Imagem != null && model.Imagem.Length > 0)
+            {
+                var extensao = Path.GetExtension(model.Imagem.FileName).ToLower();
+                var extensoesPermitidas = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+                if (!extensoesPermitidas.Contains(extensao))
+                    return BadRequest("Extensão de imagem inválida. Use JPG, JPEG, PNG ou GIF.");
+
+                string pasta = Path.Combine("Storage", "Images");
+                Directory.CreateDirectory(pasta);
+
+                string novoNome = $"{Guid.NewGuid()}{extensao}";
+                caminhoNovo = Path.Combine(pasta, novoNome);
+
+                await using var stream = new FileStream(caminhoNovo, FileMode.Create);
+                await model.Imagem.CopyToAsync(stream);
+
+                if (System.IO.File.Exists(caminhoAntigo))
+                    System.IO.File.Delete(caminhoAntigo);
+            }
+
+            var command = new UpdatePostagemCommand
+            {
+                Id = model.Id,
+                Titulo = model.Titulo,
+                CategoriaId = model.CategoriaId,
+                Imagem = caminhoNovo
+            };
+
+            var response = await service.UpdateHendler(command, token);
             return Ok(response);
         }
+
     #endregion
 
 }
