@@ -28,6 +28,10 @@ public class PostagensController(IPostagemService service) : ControllerBase
         {
             try{
                 var response = await service.GetFileHandler(command,token);
+                if(response.Data?.Imagem == null)
+                {
+                    return BadRequest("Imagem não encontrada");
+                }
                 var databyte = System.IO.File.ReadAllBytes(response.Data.Imagem);
                 return File(databyte, "image/jpg");
             }
