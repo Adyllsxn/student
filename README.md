@@ -30,38 +30,38 @@
 ```bash
 STUDENT/
 │
-├── .github/                      # Configurações de CI/CD com GitHub Actions
+├── .github/                        # Configurações de CI/CD com GitHub Actions
 │   └── workflows/
-│       ├── workflows.md          # Explica os fluxos automatizados (CI/CD)
-│       └── (ex: dotnet.yml)      # Arquivos de automação para build/teste
+│       ├── workflows.md            # Explica os fluxos automatizados (CI/CD)
+│       └── (ex: domainCI.yml)      # Arquivos de automação para build/teste
 │
-├── .vscode/                      # Configs de ambiente para o VSCode (ex: launch.json, settings.json)
+├── .vscode/                        # Configs de ambiente para o VSCode (ex: launch.json, settings.json)
 │
-├── doc/                          # Documentação geral do projeto
-│   ├── blueprint/                # Documentação técnica e de requisitos
-│   │   ├── Information.md        # Visão geral, objetivos, funcionalidades e futuras melhorias
-│   │   ├── RN-RF-RNF.md          # Regras de negócio, requisitos funcionais e não funcionais
-│   │   └── Setup.md              # Guia de instalação e uso local (manual do dev)
-│   └── visual/                   # Diagramas, wireframes, fluxogramas etc. (a adicionar)
+├── doc/                            # Documentação geral do projeto
+│   ├── blueprint/                  # Documentação técnica e de requisitos
+│   │   ├── Information.md          # Visão geral, objetivos, funcionalidades e futuras melhorias
+│   │   ├── RN-RF-RNF.md            # Regras de negócio, requisitos funcionais e não funcionais
+│   │   └── Setup.md                # Guia de instalação e uso local (manual do dev)
+│   └── visual/                     # Diagramas, wireframes, fluxogramas etc. (a adicionar)
 │
-├── src/                          # Código-fonte principal
-│   ├── backend/                  # Projeto ASP.NET Core (API REST)
-│   │   ├── Student.Application/  # Casos de uso e lógica de aplicação
-│   │   ├── Student.Domain/       # Entidades e regras de domínio
+├── src/                            # Código-fonte principal
+│   ├── backend/                    # Projeto ASP.NET Core (API REST)
+│   │   ├── Student.Application/    # Casos de uso e lógica de aplicação
+│   │   ├── Student.Domain/         # Entidades e regras de domínio
 │   │   ├── Student.Infrastructure/ # Persistência, repositórios, external services
-│   │   ├── Student.Presentation/ # Controllers e configurações de API
-│   │   └── backend.md            # Documentação explicando a arquitetura e libs usadas
+│   │   ├── Student.Presentation/   # Controllers e configurações de API
+│   │   └── backend.md              # Documentação explicando a arquitetura e libs usadas
 │   │
-│   ├── frontend/                 # Projeto React com Vite
-│   │   ├── student.web/          # Código do frontend (componentes, páginas, serviços)
-│   │   └── frontend.md           # Explicação da stack e organização do frontend
+│   ├── frontend/                   # Projeto React com Vite
+│   │   ├── student.web/            # Código do frontend (componentes, páginas, serviços)
+│   │   └── frontend.md             # Explicação da stack e organização do frontend
 │
-├── test/                         # Testes automatizados
-│   └── Student.UnitTest/         # Testes unitários com xUnit
-│       └── test.md               # Explicação dos testes, bibliotecas e estrutura
+├── test/                           # Testes automatizados
+│   └── Student.UnitTest/           # Testes unitários com xUnit
+│       └── test.md                 # Explicação dos testes, bibliotecas e estrutura
 │
-├── .gitattributes                # Define atributos de arquivos para Git (ex: fim de linha, linguagens)
-├── .gitignore                    # Ignora arquivos/diretórios (ex: bin/, obj/, node_modules/)
-├── LICENSE                       # Licença de uso do projeto (MIT, permissiva)
-├── README.md                     # Introdução ao projeto, funcionalidades, estrutura e como rodar
-└── Student.sln                   # Arquivo de solução do Visual Studio (.NET)
+├── .gitattributes                  # Define atributos de arquivos para Git (ex: fim de linha, linguagens)
+├── .gitignore                      # Ignora arquivos/diretórios (ex: bin/, obj/, node_modules/)
+├── LICENSE                         # Licença de uso do projeto (MIT, permissiva)
+├── README.md                       # Introdução ao projeto, funcionalidades, estrutura e como rodar
+└── Student.sln                     # Arquivo de solução do Visual Studio (.NET)
