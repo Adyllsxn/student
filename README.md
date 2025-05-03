@@ -34,14 +34,13 @@ STUDENT/
 │   ├── workflows/
 │   │   └── (ex: domainCI.yml)      # Arquivos de automação para build/teste
 │   │    
-│   └── workflows.md                #Explica os fluxos automatizados (CI/CD)
-│   
+│   └── workflows.md                #Explica os fluxos automatizados (CI/CD)  
 │
 ├── .vscode/                        # Configs de ambiente para o VSCode (ex: launch.json, settings.json)
 │
 ├── doc/                            # Documentação geral do projeto
 │   ├── blueprint/                  # Documentação técnica e de requisitos
-│   │   ├── Information.md          # Visão geral, objetivos, funcionalidades e futuras melhorias
+│   │   ├── ProjectOverview.md      # Visão geral, objetivos, funcionalidades e futuras melhorias
 │   │   ├── RN-RF-RNF.md            # Regras de negócio, requisitos funcionais e não funcionais
 │   │   └── Setup.md                # Guia de instalação e uso local (manual do dev)
 │   └── visual/                     # Diagramas, wireframes, fluxogramas etc. (a adicionar)
