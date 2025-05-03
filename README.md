@@ -31,9 +31,11 @@
 STUDENT/
 │
 ├── .github/                        # Configurações de CI/CD com GitHub Actions
-│   └── workflows/
-│       ├── workflows.md            # Explica os fluxos automatizados (CI/CD)
-│       └── (ex: domainCI.yml)      # Arquivos de automação para build/teste
+│   ├── workflows/
+│   │   └── (ex: domainCI.yml)      # Arquivos de automação para build/teste
+│   │    
+│   └── workflows.md                #Explica os fluxos automatizados (CI/CD)
+│   
 │
 ├── .vscode/                        # Configs de ambiente para o VSCode (ex: launch.json, settings.json)
 │

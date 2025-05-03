@@ -1,10 +1,13 @@
 #region </System>
     global using System.Text.Json.Serialization;
+    global using System.Text;
 #endregion
 
 #region </Microsoft>
     global using Microsoft.AspNetCore.Mvc;
     global using Microsoft.OpenApi.Models;
+    global using Microsoft.AspNetCore.Authentication.JwtBearer;
+    global using Microsoft.IdentityModel.Tokens;
 #endregion
 
 #region </Presentation>
