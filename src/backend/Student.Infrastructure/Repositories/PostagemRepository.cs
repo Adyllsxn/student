@@ -98,7 +98,7 @@ public class PostagemRepository(AppDbContext context) : IPostagemRepository
                 return new PagedList<List<PostagemEntity>?>(
                     null, 
                     500, 
-                    $"Erro ao executar a operação (CRIAR). Erro {ex.Message}."
+                    $"Erro ao executar a operação (GET ALL). Erro {ex.Message}."
                     );
             }
         }
