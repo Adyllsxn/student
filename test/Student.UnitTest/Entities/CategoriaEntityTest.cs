@@ -1,13 +1,13 @@
 namespace Student.UnitTest.Entities;
 public class CategoriaEntityTest
 {
-    #region <Constants>
+    #region </Constants>
         private const int InvalidNumberZero = 0;
         private const int InvalidNumber = -1;
         private const string ValidName = "Test0";
     #endregion
 
-    #region <Id>
+    #region </Id>
         [Theory]
         [InlineData(InvalidNumber, ValidName)]
         [InlineData(InvalidNumberZero, ValidName)]
@@ -21,7 +21,7 @@ public class CategoriaEntityTest
         }
     #endregion
 
-    #region <Nome>
+    #region </Nome>
         [Theory]
         [InlineData("")]
         [InlineData(null)]
@@ -36,7 +36,7 @@ public class CategoriaEntityTest
         }
     #endregion
 
-    #region <LongLenght>
+    #region </LongLenght>
         [Fact]
         public void Categoria_ShouldFailIfIsHaveLongLenght()
         {
@@ -49,7 +49,7 @@ public class CategoriaEntityTest
         }
     #endregion
 
-    #region <Criar>
+    #region </Criar>
         [Theory]
         [InlineData(ValidName)]
         public void Categoria_ShouldCreate(string nome)
@@ -59,7 +59,7 @@ public class CategoriaEntityTest
         }
     #endregion
 
-    #region <Editar>
+    #region </Editar>
         [Theory]
         [InlineData(ValidName)]
         public void Categoria_ShouldEdit(string nome)
