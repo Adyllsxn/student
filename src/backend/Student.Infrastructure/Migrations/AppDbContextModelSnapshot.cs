@@ -82,6 +82,40 @@ namespace Student.Infrastructure.Migrations
                     b.ToTable("Tbl_Postagem", (string)null);
                 });
 
+            modelBuilder.Entity("Student.Domain.Entities.UsuarioEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("VARCHAR");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("VARCHAR");
+
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tbl_Usuario", (string)null);
+                });
+
             modelBuilder.Entity("Student.Domain.Entities.PostagemEntity", b =>
                 {
                     b.HasOne("Student.Domain.Entities.CategoriaEntity", "Categoria")
