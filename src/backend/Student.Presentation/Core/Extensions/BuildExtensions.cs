@@ -5,7 +5,7 @@ public static class BuildExtensions
     {
         builder.AddControllersExtensions();
         builder.AddSwaggerExtensions();
-        builder.AddJwtBearerExtensions();
+        builder.AddJwtBearerExtensions(builder.Configuration);
         builder.AddCorsExtensions();
         builder.AddExternalLayersExtensions();
     }
