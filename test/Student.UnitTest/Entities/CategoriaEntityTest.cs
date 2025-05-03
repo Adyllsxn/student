@@ -11,7 +11,7 @@ public class CategoriaEntityTest
         [Theory]
         [InlineData(InvalidNumber, ValidName)]
         [InlineData(InvalidNumberZero, ValidName)]
-        public void ShouldFailTipoEventoIfIdIsNegative(int id, string nome)
+        public void Categoria_ShouldFailIdIfIdIsNegative(int id, string nome)
         {
             Assert.True(true); 
             Assert.Throws<DomainValidationException>(() =>
@@ -26,7 +26,7 @@ public class CategoriaEntityTest
         [InlineData("")]
         [InlineData(null)]
         [InlineData(" ")]
-        public void ShouldFailIfTipoEventoNameIsNullOrEmptyOrWhiteSpace(string nome)
+        public void Categoria_ShouldFailIfNameIsNullOrEmptyOrWhiteSpace(string nome)
         {
             Assert.True(true); 
             Assert.Throws<DomainValidationException>(() =>
@@ -38,7 +38,7 @@ public class CategoriaEntityTest
 
     #region <LongLenght>
         [Fact]
-        public void ShouldFailIfIsHaveLongLenght()
+        public void Categoria_ShouldFailIfIsHaveLongLenght()
         {
             var LongLenght = new string('B', 51);
             Assert.True(true); 
@@ -52,7 +52,7 @@ public class CategoriaEntityTest
     #region <Criar>
         [Theory]
         [InlineData(ValidName)]
-        public void ShouldCreate(string nome)
+        public void Categoria_ShouldCreate(string nome)
         {
             var count = new CategoriaEntity(nome);
             Assert.NotNull(count);
@@ -62,7 +62,7 @@ public class CategoriaEntityTest
     #region <Editar>
         [Theory]
         [InlineData(ValidName)]
-        public void ShouldEdit(string nome)
+        public void Categoria_ShouldEdit(string nome)
         {
             var count = new CategoriaEntity(nome);
             count.Update("Test");
