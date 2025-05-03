@@ -1,21 +1,21 @@
 namespace Student.Infrastructure.Repositories;
-public class PostagemRepository(AppDbContext context) : IPostagemRepository
+public class UsuarioRepository(AppDbContext context) : IUsuarioRepository
 {
     #region </Create>
-        public async Task<Result<PostagemEntity>> CreateAsync(PostagemEntity entity, CancellationToken token)
+        public async Task<Result<UsuarioEntity>> CreateAsync(UsuarioEntity entity, CancellationToken token)
         {
             try
             {
                 if(entity == null)
                 {
-                    return new Result<PostagemEntity>(
+                    return new Result<UsuarioEntity>(
                         null, 
                         400, 
                         "Parâmetros não podem estar vazio."
                         );
                 }
-                await context.Postagens.AddAsync(entity, token);
-                return new Result<PostagemEntity>(
+                await context.Usuarios.AddAsync(entity, token);
+                return new Result<UsuarioEntity>(
                     entity, 
                     201, 
                     "Operação executada com sucesso."
@@ -23,7 +23,7 @@ public class PostagemRepository(AppDbContext context) : IPostagemRepository
             }
             catch (Exception ex)
             {
-                return new Result<PostagemEntity>(
+                return new Result<UsuarioEntity>(
                     null, 
                     500, 
                     $"Erro ao executar a operação (CRIAR). Erro {ex.Message}."
@@ -45,7 +45,7 @@ public class PostagemRepository(AppDbContext context) : IPostagemRepository
                         "ID deve ser maior que zero."
                         );
                 }
-                var response = await context.Postagens.FindAsync(entityId, token);
+                var response = await context.Usuarios.FindAsync(entityId, token);
                 if (response == null)
                 {
                     return new Result<bool>(
@@ -54,7 +54,7 @@ public class PostagemRepository(AppDbContext context) : IPostagemRepository
                         "ID não encontrado."
                         );
                 }
-                context.Postagens.Remove(response);
+                context.Usuarios.Remove(response);
                 return new Result<bool>(
                     true, 
                     200, 
@@ -73,11 +73,11 @@ public class PostagemRepository(AppDbContext context) : IPostagemRepository
     #endregion
 
     #region </GetAll>
-        public async Task<PagedList<List<PostagemEntity>?>> GetAllAsync(PagedRequest request, CancellationToken token)
+        public async Task<PagedList<List<UsuarioEntity>?>> GetAllAsync(PagedRequest request, CancellationToken token)
         {
             try
             {
-                var query = context.Postagens.AsNoTracking().AsQueryable();
+                var query = context.Usuarios.AsNoTracking().AsQueryable();
 
                 var result = await query
                             .Skip((request.PageNumber - 1) * request.PageSize)
@@ -86,7 +86,7 @@ public class PostagemRepository(AppDbContext context) : IPostagemRepository
                 
                 var count = await query.CountAsync();
 
-                return new PagedList<List<PostagemEntity>?>(
+                return new PagedList<List<UsuarioEntity>?>(
                     result,
                     count,
                     request.PageNumber,
@@ -95,7 +95,7 @@ public class PostagemRepository(AppDbContext context) : IPostagemRepository
             }
             catch (Exception ex)
             {
-                return new PagedList<List<PostagemEntity>?>(
+                return new PagedList<List<UsuarioEntity>?>(
                     null, 
                     500, 
                     $"Erro ao executar a operação (GET ALL). Erro {ex.Message}."
@@ -103,30 +103,30 @@ public class PostagemRepository(AppDbContext context) : IPostagemRepository
             }
         }
     #endregion
-
+    
     #region </GetById>
-        public async Task<Result<PostagemEntity?>> GetByIdAsync(int entityId, CancellationToken token)
+        public async Task<Result<UsuarioEntity?>> GetByIdAsync(int entityId, CancellationToken token)
         {
             try
             {
                 if(entityId <= 0)
                 {
-                    return new Result<PostagemEntity?>(
+                    return new Result<UsuarioEntity?>(
                         null, 
                         400, 
                         "ID deve ser maior que zero."
                         );
                 }
-                var response = await context.Postagens.FindAsync(entityId, token);
+                var response = await context.Usuarios.FindAsync(entityId, token);
                 if(response == null)
                 {
-                    return new Result<PostagemEntity?>(
+                    return new Result<UsuarioEntity?>(
                         null, 
                         404, 
                         "ID não encontrado."
                         );
                 }
-                return new Result<PostagemEntity?>(
+                return new Result<UsuarioEntity?>(
                     response, 
                     200, 
                     "Dados encontrado."
@@ -134,46 +134,7 @@ public class PostagemRepository(AppDbContext context) : IPostagemRepository
             }
             catch (Exception ex)
             {
-                return new Result<PostagemEntity?>(
-                    null, 
-                    500, 
-                    $"Erro ao executar a operação (GET BY ID). Erro {ex.Message}."
-                    );
-            }
-        }
-    #endregion
-
-    #region </GetFile>
-        public async Task<Result<PostagemEntity?>> GetFileAsync(int entityId, CancellationToken token)
-        {
-            try
-            {
-                if(entityId <= 0)
-                {
-                    return new Result<PostagemEntity?>(
-                        null, 
-                        400, 
-                        "ID deve ser maior que zero."
-                        );
-                }
-                var response = await context.Postagens.FindAsync(entityId, token);
-                if(response == null)
-                {
-                    return new Result<PostagemEntity?>(
-                        null, 
-                        404, 
-                        "ID não encontrado."
-                        );
-                }
-                return new Result<PostagemEntity?>(
-                    response, 
-                    200, 
-                    "Dados encontrado."
-                    );
-            }
-            catch (Exception ex)
-            {
-                return new Result<PostagemEntity?>(
+                return new Result<UsuarioEntity?>(
                     null, 
                     500, 
                     $"Erro ao executar a operação (GET BY ID). Erro {ex.Message}."
@@ -183,29 +144,29 @@ public class PostagemRepository(AppDbContext context) : IPostagemRepository
     #endregion
 
     #region </Search>
-        public async Task<Result<List<PostagemEntity>?>> SearchAsync(Expression<Func<PostagemEntity, bool>> expression, string entity, CancellationToken token)
+        public async Task<Result<List<UsuarioEntity>?>> SearchAsync(Expression<Func<UsuarioEntity, bool>> expression, string entity, CancellationToken token)
         {
             try
             {
                 if(entity == null)
                 {
-                    return new Result<List<PostagemEntity>?>(
+                    return new Result<List<UsuarioEntity>?>(
                         null, 
                         400, 
                         "Parâmetros não podem estar vazio."
                         );
                 }
-                var response = await context.Postagens.Where(expression).ToListAsync(token);
+                var response = await context.Usuarios.Where(expression).ToListAsync(token);
                 if(response == null || response.Count == 0)
                 {
-                    return new Result<List<PostagemEntity>?>(
+                    return new Result<List<UsuarioEntity>?>(
                         null, 
                         404, 
                         "Nenhum dado encontrado."
                         );
                 }
 
-                return new Result<List<PostagemEntity>?>(
+                return new Result<List<UsuarioEntity>?>(
                     response, 
                     200, 
                     "Dados encontrado."
@@ -213,7 +174,7 @@ public class PostagemRepository(AppDbContext context) : IPostagemRepository
             }
             catch (Exception ex)
             {
-                return new Result<List<PostagemEntity>?>(
+                return new Result<List<UsuarioEntity>?>(
                     null, 
                     500, 
                     $"Erro ao executar a operação (SEARCH). Erro {ex.Message}."
@@ -223,29 +184,29 @@ public class PostagemRepository(AppDbContext context) : IPostagemRepository
     #endregion
 
     #region </Update>
-        public async Task<Result<PostagemEntity>> UpdateAsync(PostagemEntity entity, CancellationToken token)
+        public async Task<Result<UsuarioEntity>> UpdateAsync(UsuarioEntity entity, CancellationToken token)
         {
             try
             {
                 if(entity == null)
                 {
-                    return new Result<PostagemEntity>(
+                    return new Result<UsuarioEntity>(
                         null, 
                         400, 
                         "Parâmetros não podem estar vazio."
                         );
                 }
-                var response = await context.Postagens.FindAsync(entity.Id);
+                var response = await context.Usuarios.FindAsync(entity.Id);
                 if(response == null)
                 {
-                    return new Result<PostagemEntity>(
+                    return new Result<UsuarioEntity>(
                         null, 
                         404, 
                         "ID não encontrado."
                         );
                 }
                 context.Entry(response).CurrentValues.SetValues(entity);
-                return new Result<PostagemEntity>(
+                return new Result<UsuarioEntity>(
                     response, 
                     200, 
                     "Operação executada com sucesso."
@@ -253,7 +214,7 @@ public class PostagemRepository(AppDbContext context) : IPostagemRepository
             }
             catch (Exception ex)
             {
-                return new Result<PostagemEntity>(
+                return new Result<UsuarioEntity>(
                     null, 
                     500, 
                     $"Erro ao executar a operação (UPDATE). Erro {ex.Message}."
