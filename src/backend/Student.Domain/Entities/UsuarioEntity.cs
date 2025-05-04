@@ -3,7 +3,6 @@ public class UsuarioEntity: EntityBase, IAgragateRoot
 {
     public string Nome { get; private set; } = null!;
     public string Email { get; private set; } = null!;
-    public bool IsAdmin { get; private set; }
     public byte[] PasswordHash { get; private set; } = null!;
     public byte[] PasswordSalt { get; private set; } = null!;
 
@@ -21,10 +20,6 @@ public class UsuarioEntity: EntityBase, IAgragateRoot
         ValidationDomain(nome, email);
     }
 
-    public void SetAdmin(bool isAdmin)
-    {
-        IsAdmin = isAdmin;
-    }
     public void UpdatePassword(byte[] passwordHash, byte[] passwordSalt)
     {
         PasswordHash = passwordHash;
@@ -40,6 +35,5 @@ public class UsuarioEntity: EntityBase, IAgragateRoot
 
         Nome = nome;
         Email = email;
-        IsAdmin = false;
     }
 }

@@ -13,7 +13,5 @@ public class UsuarioMapping : IEntityTypeConfiguration<UsuarioEntity>
                 IsRequired(true).
                 HasMaxLength(200).
                 HasColumnType("VARCHAR");
-        builder.Property(x => x.IsAdmin).
-                IsRequired(true);
     }
 }
