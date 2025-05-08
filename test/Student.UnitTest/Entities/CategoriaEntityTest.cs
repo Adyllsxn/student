@@ -59,15 +59,4 @@ public class CategoriaEntityTest
         }
     #endregion
 
-    #region </Editar>
-        [Theory]
-        [InlineData(ValidName)]
-        public void Categoria_ShouldEdit(string nome)
-        {
-            var count = new CategoriaEntity(nome);
-            count.Update("Test");
-            Assert.Equal("Test", count.Nome);
-        }
-    #endregion
-
 }

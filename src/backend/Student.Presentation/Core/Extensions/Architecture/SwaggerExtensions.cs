@@ -10,7 +10,7 @@ public static class SwaggerExtensions
                     c.SwaggerDoc("v1", new OpenApiInfo{
                         Title = "Student.API",
                         Version = "v1",
-                        Description = "API da plataforma student, um sistema de publicação de conteudos académicos"
+                        Description = "STUDENT é uma plataforma web para compartilhamento de conteúdos acadêmicos, permitindo a publicação de resumos, links, vídeos e PDFs, com interação por comentários, curtidas e favoritos. A plataforma é voltada para estudantes e professores, promovendo a troca de conhecimento e facilitando o acesso a materiais de estudo."
                     });
                 #endregion
 
