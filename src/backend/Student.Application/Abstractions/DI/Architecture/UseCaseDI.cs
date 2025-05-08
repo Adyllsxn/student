@@ -7,6 +7,15 @@ public static class UseCaseDI
             services.AddScoped<GetDashboardHandler>();
         #endregion
 
+        #region </Usuario>
+            services.AddScoped<CreateUsuarioHandler>();
+            services.AddScoped<DeleteUsuarioHandler>();
+            services.AddScoped<GetUsuariosHandler>();
+            services.AddScoped<GetUsuarioByIdHandler>();
+            services.AddScoped<SearchUsuarioHandler>();
+            services.AddScoped<UpdateUsuarioHandler>();
+        #endregion
+
         #region </Categoria>
             services.AddScoped<CreateCategoriaHendler>();
             services.AddScoped<DeleteCategoriaHandler>();
