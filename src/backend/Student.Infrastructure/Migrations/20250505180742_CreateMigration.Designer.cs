@@ -12,7 +12,7 @@ using Student.Infrastructure.Context;
 namespace Student.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250501211727_CreateMigration")]
+    [Migration("20250505180742_CreateMigration")]
     partial class CreateMigration
     {
         /// <inheritdoc />
@@ -83,6 +83,37 @@ namespace Student.Infrastructure.Migrations
                     b.HasIndex("CategoriaId");
 
                     b.ToTable("Tbl_Postagem", (string)null);
+                });
+
+            modelBuilder.Entity("Student.Domain.Entities.UsuarioEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("VARCHAR");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("VARCHAR");
+
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tbl_Usuario", (string)null);
                 });
 
             modelBuilder.Entity("Student.Domain.Entities.PostagemEntity", b =>

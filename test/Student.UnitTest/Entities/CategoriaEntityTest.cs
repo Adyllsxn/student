@@ -1,17 +1,17 @@
 namespace Student.UnitTest.Entities;
 public class CategoriaEntityTest
 {
-    #region <Constants>
+    #region </Constants>
         private const int InvalidNumberZero = 0;
         private const int InvalidNumber = -1;
         private const string ValidName = "Test0";
     #endregion
 
-    #region <Id>
+    #region </Id>
         [Theory]
         [InlineData(InvalidNumber, ValidName)]
         [InlineData(InvalidNumberZero, ValidName)]
-        public void ShouldFailTipoEventoIfIdIsNegative(int id, string nome)
+        public void Categoria_ShouldFailIdIfIdIsNegative(int id, string nome)
         {
             Assert.True(true); 
             Assert.Throws<DomainValidationException>(() =>
@@ -21,12 +21,12 @@ public class CategoriaEntityTest
         }
     #endregion
 
-    #region <Nome>
+    #region </Nome>
         [Theory]
         [InlineData("")]
         [InlineData(null)]
         [InlineData(" ")]
-        public void ShouldFailIfTipoEventoNameIsNullOrEmptyOrWhiteSpace(string nome)
+        public void Categoria_ShouldFailIfNameIsNullOrEmptyOrWhiteSpace(string nome)
         {
             Assert.True(true); 
             Assert.Throws<DomainValidationException>(() =>
@@ -36,9 +36,9 @@ public class CategoriaEntityTest
         }
     #endregion
 
-    #region <LongLenght>
+    #region </LongLenght>
         [Fact]
-        public void ShouldFailIfIsHaveLongLenght()
+        public void Categoria_ShouldFailIfIsHaveLongLenght()
         {
             var LongLenght = new string('B', 51);
             Assert.True(true); 
@@ -49,24 +49,13 @@ public class CategoriaEntityTest
         }
     #endregion
 
-    #region <Criar>
+    #region </Criar>
         [Theory]
         [InlineData(ValidName)]
-        public void ShouldCreate(string nome)
+        public void Categoria_ShouldCreate(string nome)
         {
             var count = new CategoriaEntity(nome);
             Assert.NotNull(count);
-        }
-    #endregion
-
-    #region <Editar>
-        [Theory]
-        [InlineData(ValidName)]
-        public void ShouldEdit(string nome)
-        {
-            var count = new CategoriaEntity(nome);
-            count.Update("Test");
-            Assert.Equal("Test", count.Nome);
         }
     #endregion
 

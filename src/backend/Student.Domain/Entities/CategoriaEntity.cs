@@ -17,10 +17,6 @@ public sealed class CategoriaEntity: EntityBase, IAgragateRoot
     {
         ValidationDomain(nome);
     }
-    public void Update(string nome)
-    {
-        ValidationDomain(nome);
-    }
     public void ValidationDomain(string nome)
     {
         DomainValidationException.When(string.IsNullOrWhiteSpace(nome), "Nome é obrigatório.");

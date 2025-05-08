@@ -22,10 +22,6 @@ public class PostagemEntity: EntityBase, IAgragateRoot
     {
         ValidationDomain(titulo, data, imagem, categoriaId);
     }
-    public void Update(string titulo, DateTime data, string imagem, int categoriaId)
-    {
-        ValidationDomain(titulo, data, imagem, categoriaId);
-    }
     public void ValidationDomain(string titulo, DateTime data, string imagem, int categoriaId)
     {
         DomainValidationException.When(string.IsNullOrWhiteSpace(titulo), "Título é obrigatório.");
