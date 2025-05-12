@@ -97,7 +97,7 @@ namespace Student.Infrastructure.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(250)
+                        .HasMaxLength(200)
                         .HasColumnType("VARCHAR");
 
                     b.Property<byte[]>("PasswordHash")

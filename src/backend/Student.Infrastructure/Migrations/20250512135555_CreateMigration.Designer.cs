@@ -12,7 +12,7 @@ using Student.Infrastructure.Context;
 namespace Student.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250505180742_CreateMigration")]
+    [Migration("20250512135555_CreateMigration")]
     partial class CreateMigration
     {
         /// <inheritdoc />
@@ -100,7 +100,7 @@ namespace Student.Infrastructure.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(250)
+                        .HasMaxLength(200)
                         .HasColumnType("VARCHAR");
 
                     b.Property<byte[]>("PasswordHash")

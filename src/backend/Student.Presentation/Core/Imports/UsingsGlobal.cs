@@ -20,11 +20,13 @@
 #region </Application>
     global using Student.Application.Abstractions.Interfaces;
     global using Student.Application.Abstractions.DI;
+
     global using Student.Application.UseCases.Categoria.Create;
     global using Student.Application.UseCases.Categoria.Delete;
     global using Student.Application.UseCases.Categoria.GetById;
     global using Student.Application.UseCases.Categoria.Search;
     global using Student.Application.UseCases.Categoria.Update;
+
     global using Student.Application.UseCases.Postagem.Create;
     global using Student.Application.UseCases.Postagem.GetById;
     global using Student.Application.UseCases.Postagem.GetFile;
@@ -32,6 +34,13 @@
     global using Student.Application.UseCases.Postagem.Delete;
     global using Student.Application.UseCases.Postagem.Search;
     global using Student.Application.UseCases.Postagem.Update;
+
+    global using Student.Application.UseCases.Usuario.Create;
+    global using Student.Application.UseCases.Usuario.Delete;
+    global using Student.Application.UseCases.Usuario.GetAll;
+    global using Student.Application.UseCases.Usuario.GetById;
+    global using Student.Application.UseCases.Usuario.Search;
+    global using Student.Application.UseCases.Usuario.Update;
 #endregion
 
 #region </Infrastructure>

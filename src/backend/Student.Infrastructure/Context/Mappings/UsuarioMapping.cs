@@ -7,8 +7,9 @@ public class UsuarioMapping : IEntityTypeConfiguration<UsuarioEntity>
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Nome).
                 IsRequired(true).
-                HasMaxLength(250).
+                HasMaxLength(200).
                 HasColumnType("VARCHAR");
+                
         builder.Property(x => x.Email).
                 IsRequired(true).
                 HasMaxLength(200).

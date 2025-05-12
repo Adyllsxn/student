@@ -1,5 +1,26 @@
 namespace Student.Application.MethodExtensions.Usuario;
-public class CreateUsuarioExtensions
+public static class CreateUsuarioExtensions
 {
+    public static UsuarioEntity MapToUsuarioEntity(this CreateUsuarioCommand command)
+    {
+        return new UsuarioEntity
+        (
+            command.Nome,
+            command.Email
+        );
+    }
     
+    public static CreateUsuarioResponse MapToCreateUsuario (this UsuarioEntity entity)
+    {
+        return new CreateUsuarioResponse
+        {
+            Id = entity.Id,
+            Nome = entity.Nome,
+            Email = entity.Email
+        };
+    }
+    public static IEnumerable<CreateUsuarioResponse> MapToCreateUsuario(this IEnumerable<UsuarioEntity> response)
+    {
+        return response.Select(entity => entity.MapToCreateUsuario());
+    }
 }

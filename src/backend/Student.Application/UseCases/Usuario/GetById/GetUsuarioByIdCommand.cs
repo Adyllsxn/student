@@ -1,5 +1,5 @@
 namespace Student.Application.UseCases.Usuario.GetById;
-public class GetUsuarioByIdCommand
+public record GetUsuarioByIdCommand
 {
-    
+    public int Id { get; set; }
 }

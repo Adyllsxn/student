@@ -1,5 +1,5 @@
 namespace Student.Application.UseCases.Usuario.Delete;
-public class DeleteUsuarioCommand
+public record DeleteUsuarioCommand
 {
-    
+    public int Id { get; set; }
 }
