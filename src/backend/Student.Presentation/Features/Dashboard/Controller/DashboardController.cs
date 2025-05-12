@@ -9,7 +9,7 @@ public class DashboardController(IDashboardService service) : ControllerBase
         {
             var response = await service.GetHandler(token);
             return Ok(
-                $" CATEGORIA: {response.QtdCategoria} \n POSTAGEM: {response.QtdPostagem}"
+                $" CATEGORIA: {response.QtdCategoria} \n POSTAGEM: {response.QtdPostagem} \n USUÁRIO: {response.QtdUsuario}"
             );
         }
     #endregion
