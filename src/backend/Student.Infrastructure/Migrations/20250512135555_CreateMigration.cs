@@ -32,7 +32,7 @@ namespace Student.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(type: "VARCHAR(250)", maxLength: 250, nullable: false),
+                    Nome = table.Column<string>(type: "VARCHAR(200)", maxLength: 200, nullable: false),
                     Email = table.Column<string>(type: "VARCHAR(200)", maxLength: 200, nullable: false),
                     PasswordHash = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     PasswordSalt = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
