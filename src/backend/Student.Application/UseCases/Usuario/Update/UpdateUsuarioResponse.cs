@@ -1,5 +1,2 @@
 namespace Student.Application.UseCases.Usuario.Update;
-public class UpdateUsuarioResponse
-{
-    
-}
+public record UpdateUsuarioResponse : UsuarioResponse;

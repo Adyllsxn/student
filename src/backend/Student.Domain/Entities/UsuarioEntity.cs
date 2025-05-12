@@ -28,7 +28,7 @@ public class UsuarioEntity: EntityBase, IAgragateRoot
     public void ValidationDomain(string nome, string email)
     {
         DomainValidationException.When(string.IsNullOrWhiteSpace(nome), "Nome é obrigatório");
-        DomainValidationException.When(nome.Length > 250, "O Nome não pode ultrapassar de 200 caracteres");
+        DomainValidationException.When(nome.Length > 200, "O Nome não pode ultrapassar de 200 caracteres");
         
         DomainValidationException.When(string.IsNullOrWhiteSpace(email), "Email é obrigatório");
         DomainValidationException.When(email.Length > 200, "O Nome não pode ultrapassar de 200 caracteres");

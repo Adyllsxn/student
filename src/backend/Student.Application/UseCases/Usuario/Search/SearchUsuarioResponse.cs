@@ -1,5 +1,2 @@
 namespace Student.Application.UseCases.Usuario.Search;
-public class SearchUsuarioResponse
-{
-    
-}
+public record SearchUsuarioResponse : UsuarioResponse;
