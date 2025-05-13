@@ -7,7 +7,7 @@ public static class UpdateUsuarioExtensions
         (
             command.Id,
             command.Nome,
-            command.Email 
+            command.Email
         );
     }
     

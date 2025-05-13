@@ -1,8 +1,18 @@
+using Student.Presentation.Features.Usuario.Model;
+
 namespace Student.Presentation.Features.Usuario.Controller;
 [ApiController]
 [Route("v1/")]
 public class UsuariosController(IUsuarioService service) : ControllerBase
 {
+    #region </Register>
+        [HttpPost("Register"), EndpointSummary("Registrar um novo usuário.")]
+        public async Task<ActionResult<TokenModel>> Register(CreateUsuarioCommand command, CancellationToken token)
+        {
+
+        }
+    #endregion
+
     #region </GetAll>
         [HttpGet("Usuários"), EndpointSummary("Obter Usuários")]
         public async Task<IActionResult> GetAllAsync([FromQuery] GetUsuariosCommand command, CancellationToken token)
