@@ -1,0 +1,2 @@
+namespace Student.Application.UseCases.TipoUsuario.Create;
+public record CreateTipoUsuarioResponse: TipoUsuarioResponse;

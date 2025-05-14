@@ -1,0 +1,2 @@
+namespace Student.Application.UseCases.TipoUsuario.Search;
+public record SearchTipoUsuarioResponse: TipoUsuarioResponse;

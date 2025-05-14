@@ -1,0 +1,2 @@
+namespace Student.Application.UseCases.TipoUsuario.GetById;
+public record GetTipoUsuarioByIdResponse: TipoUsuarioResponse;

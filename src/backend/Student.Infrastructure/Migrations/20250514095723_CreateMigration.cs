@@ -27,19 +27,16 @@ namespace Student.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tbl_Usuario",
+                name: "Tbl_TipoUsuario",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(type: "VARCHAR(200)", maxLength: 200, nullable: false),
-                    Email = table.Column<string>(type: "VARCHAR(200)", maxLength: 200, nullable: false),
-                    PasswordHash = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
-                    PasswordSalt = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
+                    Nome = table.Column<string>(type: "NVARCHAR(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tbl_Usuario", x => x.Id);
+                    table.PrimaryKey("PK_Tbl_TipoUsuario", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -64,6 +61,29 @@ namespace Student.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Tbl_Usuario",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(type: "VARCHAR(200)", maxLength: 200, nullable: false),
+                    Email = table.Column<string>(type: "VARCHAR(200)", maxLength: 200, nullable: false),
+                    TipoUsuarioId = table.Column<int>(type: "int", nullable: false),
+                    PasswordHash = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
+                    PasswordSalt = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tbl_Usuario", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TipoUsuario_Usuario",
+                        column: x => x.TipoUsuarioId,
+                        principalTable: "Tbl_TipoUsuario",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Tbl_Categoria",
                 columns: new[] { "Id", "Nome" },
@@ -73,10 +93,24 @@ namespace Student.Infrastructure.Migrations
                     { 2, "Design" }
                 });
 
+            migrationBuilder.InsertData(
+                table: "Tbl_TipoUsuario",
+                columns: new[] { "Id", "Nome" },
+                values: new object[,]
+                {
+                    { 1, "Adm" },
+                    { 2, "Comum" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Tbl_Postagem_CategoriaId",
                 table: "Tbl_Postagem",
                 column: "CategoriaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tbl_Usuario_TipoUsuarioId",
+                table: "Tbl_Usuario",
+                column: "TipoUsuarioId");
         }
 
         /// <inheritdoc />
@@ -90,6 +124,9 @@ namespace Student.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Tbl_Categoria");
+
+            migrationBuilder.DropTable(
+                name: "Tbl_TipoUsuario");
         }
     }
 }

@@ -7,7 +7,8 @@ public static class GetDashboardExtensions
         {
             QtdCategoria = entity.QtdCategoria,
             QtdPostagem = entity.QtdPostagem,
-            QtdUsuario = entity.QtdUsuario
+            QtdUsuario = entity.QtdUsuario,
+            QtdTipoUsuario = entity.QtdTipoUsuario
         };
     }
     public static IEnumerable<GetDashboardResponse> MapToGetDashboard(this IEnumerable<DashboardEntity> response)

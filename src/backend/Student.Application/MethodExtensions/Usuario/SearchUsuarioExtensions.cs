@@ -7,7 +7,8 @@ public static class SearchUsuarioExtensions
         {
             Id = entity.Id,
             Nome = entity.Nome,
-            Email = entity.Email
+            Email = entity.Email,
+            TipoUsuarioId = entity.TipoUsuarioId
         };
     }
     public static IEnumerable<SearchUsuarioResponse> MapToSearchUsuario(this IEnumerable<UsuarioEntity> response)

@@ -8,6 +8,7 @@
     global using Microsoft.OpenApi.Models;
     global using Microsoft.AspNetCore.Authentication.JwtBearer;
     global using Microsoft.IdentityModel.Tokens;
+    global using Microsoft.AspNetCore.Authorization;
 #endregion
 
 #region </Presentation>
@@ -15,6 +16,7 @@
     global using Student.Presentation.Core.Extensions.Architecture;
     global using Student.Presentation.Core.Configurations;
     global using Student.Presentation.Features.Postagem.Model;
+    global using Student.Presentation.Features.Usuario.Model;
 #endregion
 
 #region </Application>
@@ -41,8 +43,19 @@
     global using Student.Application.UseCases.Usuario.GetById;
     global using Student.Application.UseCases.Usuario.Search;
     global using Student.Application.UseCases.Usuario.Update;
+
+    global using Student.Application.UseCases.TipoUsuario.Create;
+    global using Student.Application.UseCases.TipoUsuario.Delete;
+    global using Student.Application.UseCases.TipoUsuario.GetAll;
+    global using Student.Application.UseCases.TipoUsuario.GetById;
+    global using Student.Application.UseCases.TipoUsuario.Search;
+    global using Student.Application.UseCases.TipoUsuario.Update;
 #endregion
 
 #region </Infrastructure>
     global using Student.Infrastructure.Abstractions.DI;
+#endregion
+
+#region </Domain>
+    global using Student.Domain.Abstractions.Authentication;
 #endregion

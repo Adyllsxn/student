@@ -6,6 +6,16 @@ public class CreateUsuarioHandler(IUsuarioRepository repository, IUnitOfWork uni
         try
         {
             var entity = command.MapToUsuarioEntity();
+
+            if(command.Password != null)
+            {
+                using var hmac = new HMACSHA512();
+                byte[] passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(command.Password));
+                byte[] passwordSalt = hmac.Key;
+
+                entity.UpdatePassword(passwordHash, passwordSalt);
+            }
+
             var response = await repository.CreateAsync(entity, token);
             await unitOfWork.CommitAsync();
 

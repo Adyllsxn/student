@@ -7,7 +7,8 @@ public static class UpdateUsuarioExtensions
         (
             command.Id,
             command.Nome,
-            command.Email 
+            command.Email,
+            command.TipoUsuarioId
         );
     }
     
@@ -17,7 +18,8 @@ public static class UpdateUsuarioExtensions
         {
             Id = entity.Id,
             Nome = entity.Nome,
-            Email = entity.Email
+            Email = entity.Email,
+            TipoUsuarioId = entity.TipoUsuarioId
         };
     }
     public static IEnumerable<UpdateUsuarioResponse> MapToUpdateUsuario(this IEnumerable<UsuarioEntity> response)

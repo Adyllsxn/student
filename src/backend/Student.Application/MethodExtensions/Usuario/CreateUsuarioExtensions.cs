@@ -3,10 +3,12 @@ public static class CreateUsuarioExtensions
 {
     public static UsuarioEntity MapToUsuarioEntity(this CreateUsuarioCommand command)
     {
+
         return new UsuarioEntity
         (
             command.Nome,
-            command.Email
+            command.Email,
+            command.TipoUsuarioId
         );
     }
     
@@ -16,7 +18,8 @@ public static class CreateUsuarioExtensions
         {
             Id = entity.Id,
             Nome = entity.Nome,
-            Email = entity.Email
+            Email = entity.Email,
+            TipoUsuarioId = entity.TipoUsuarioId
         };
     }
     public static IEnumerable<CreateUsuarioResponse> MapToCreateUsuario(this IEnumerable<UsuarioEntity> response)

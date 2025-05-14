@@ -6,7 +6,8 @@ public class DashboardRepository(AppDbContext context) : IDashboardRepository
         DashboardEntity entity =  new  DashboardEntity();
         entity.QtdCategoria = await context.Categorias.CountAsync(token);
         entity.QtdPostagem = await context.Postagens.CountAsync(token);
-        entity.QtdUsuario = await context.Postagens.CountAsync(token);
+        entity.QtdUsuario = await context.Usuarios.CountAsync(token);
+        entity.QtdTipoUsuario = await context.TipoUsuarios.CountAsync(token);
         return entity;
     }
 }

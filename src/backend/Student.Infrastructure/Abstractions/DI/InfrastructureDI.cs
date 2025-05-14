@@ -4,11 +4,13 @@ public static class InfrastructureDI
     public static void AddInfrastructureDI (this IServiceCollection services, IConfiguration configuration)
     {
         #region </Repositories>
+            services.AddScoped<IAuthenticationIdentity, AuthenticationIdentity>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddScoped<IPostagemRepository, PostagemRepository>();
             services.AddScoped<IDashboardRepository, DashboardRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<ITipoUsuarioRepository, TipoUsuarioRepository>();
         #endregion
 
         #region </DbConnection>
