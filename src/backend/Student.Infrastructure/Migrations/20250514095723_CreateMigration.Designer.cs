@@ -12,7 +12,7 @@ using Student.Infrastructure.Context;
 namespace Student.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250512135555_CreateMigration")]
+    [Migration("20250514095723_CreateMigration")]
     partial class CreateMigration
     {
         /// <inheritdoc />
@@ -85,6 +85,36 @@ namespace Student.Infrastructure.Migrations
                     b.ToTable("Tbl_Postagem", (string)null);
                 });
 
+            modelBuilder.Entity("Student.Domain.Entities.TipoUsuarioEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("NVARCHAR");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tbl_TipoUsuario", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nome = "Adm"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Nome = "Comum"
+                        });
+                });
+
             modelBuilder.Entity("Student.Domain.Entities.UsuarioEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -111,7 +141,12 @@ namespace Student.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
 
+                    b.Property<int>("TipoUsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("TipoUsuarioId");
 
                     b.ToTable("Tbl_Usuario", (string)null);
                 });
@@ -128,9 +163,26 @@ namespace Student.Infrastructure.Migrations
                     b.Navigation("Categoria");
                 });
 
+            modelBuilder.Entity("Student.Domain.Entities.UsuarioEntity", b =>
+                {
+                    b.HasOne("Student.Domain.Entities.TipoUsuarioEntity", "TipoUsuario")
+                        .WithMany("Usuarios")
+                        .HasForeignKey("TipoUsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_TipoUsuario_Usuario");
+
+                    b.Navigation("TipoUsuario");
+                });
+
             modelBuilder.Entity("Student.Domain.Entities.CategoriaEntity", b =>
                 {
                     b.Navigation("Postagens");
+                });
+
+            modelBuilder.Entity("Student.Domain.Entities.TipoUsuarioEntity", b =>
+                {
+                    b.Navigation("Usuarios");
                 });
 #pragma warning restore 612, 618
         }

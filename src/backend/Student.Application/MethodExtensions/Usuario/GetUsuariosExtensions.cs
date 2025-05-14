@@ -8,6 +8,7 @@ public static class GetUsuariosExtensions
             Id = entity.Id,
             Nome = entity.Nome,
             Email = entity.Email,
+            TipoUsuarioId = entity.TipoUsuarioId
         };
     }
     public static IEnumerable<GetUsuariosResponse> MapToGetUsuarios(this IEnumerable<UsuarioEntity> response)

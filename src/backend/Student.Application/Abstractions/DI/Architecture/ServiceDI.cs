@@ -7,6 +7,6 @@ public static class ServiceDI
         services.AddScoped<IPostagemService, PostagemService>();
         services.AddScoped<IDashboardService, DashboardService>();
         services.AddScoped<IUsuarioService, UsuarioService>();
-        
+        services.AddScoped<ITipoUsuarioService, TipoUsuarioService>();
     }
 }

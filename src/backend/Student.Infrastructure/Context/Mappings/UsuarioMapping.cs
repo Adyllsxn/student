@@ -14,5 +14,10 @@ public class UsuarioMapping : IEntityTypeConfiguration<UsuarioEntity>
                 IsRequired(true).
                 HasMaxLength(200).
                 HasColumnType("VARCHAR");
+        
+        builder.Property(x => x.TipoUsuarioId).
+                IsRequired(true);
+        
+        builder.HasOne(x => x.TipoUsuario).WithMany(x => x.Usuarios).HasForeignKey(x => x.TipoUsuarioId).HasConstraintName("FK_TipoUsuario_Usuario").OnDelete(DeleteBehavior.Cascade);
     }
 }

@@ -1,5 +1,5 @@
-namespace Student.Application.UseCases.Categoria.Search;
-public record SearchCategoriaCommand
+namespace Student.Application.UseCases.TipoUsuario.Search;
+public record SearchTipoUsuarioCommand
 {
     [Required(ErrorMessage = "Nome é obrigatório")]
     [DataType(DataType.Text)]

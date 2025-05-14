@@ -6,49 +6,49 @@ public class UsuarioEntityTest
         private const int InvalidNumber = -1;
         private const string ValidName = "Test";
         private const string ValidEmail = "Test@test.com";
-        private const bool ValidIsAdmin = true;
+        private const int ValidTipoUsuario = 1;
     #endregion
 
     #region </Id>
         [Theory]
-        [InlineData(InvalidNumber, ValidName, ValidEmail)]
-        [InlineData(InvalidNumberZero, ValidName, ValidEmail)]
-        public void Usuario_ShouldFailIfIdIdIsNegative(int id, string nome, string email)
+        [InlineData(InvalidNumber, ValidName, ValidEmail, ValidTipoUsuario)]
+        [InlineData(InvalidNumberZero, ValidName, ValidEmail, ValidTipoUsuario)]
+        public void Usuario_ShouldFailIfIdIdIsNegative(int id, string nome, string email, int tipoUsuarioId)
         {
             Assert.True(true); 
             Assert.Throws<DomainValidationException>(() =>
             {
-                var acount = new UsuarioEntity(id, nome, email);
+                var acount = new UsuarioEntity(id, nome, email, tipoUsuarioId);
             });
         }
     #endregion
 
     #region </Nome>
         [Theory]
-        [InlineData("", ValidEmail)]
-        [InlineData(null, ValidEmail)]
-        [InlineData(" ", ValidEmail)]
-        public void Usuario_ShouldFailIfNameIsNullOrEmptyOrWhiteSpace(string nome, string email)
+        [InlineData("", ValidEmail, ValidTipoUsuario)]
+        [InlineData(null, ValidEmail, ValidTipoUsuario)]
+        [InlineData(" ", ValidEmail, ValidTipoUsuario)]
+        public void Usuario_ShouldFailIfNameIsNullOrEmptyOrWhiteSpace(string nome, string email, int tipoUsuarioId)
         {
             Assert.True(true); 
             Assert.Throws<DomainValidationException>(() =>
             {
-                var acount = new UsuarioEntity(nome, email);
+                var acount = new UsuarioEntity(nome, email, tipoUsuarioId);
             });
         }
     #endregion
 
     #region </Email>
         [Theory]
-        [InlineData(ValidName, "")]
-        [InlineData(null, null)]
-        [InlineData(ValidName, " ")]
-        public void Usuario_ShouldFailIfEmailIsNullOrEmptyOrWhiteSpace(string nome, string email)
+        [InlineData(ValidName, "", ValidTipoUsuario)]
+        [InlineData(null, null, ValidTipoUsuario)]
+        [InlineData(ValidName, " ", ValidTipoUsuario)]
+        public void Usuario_ShouldFailIfEmailIsNullOrEmptyOrWhiteSpace(string nome, string email, int tipoUsuarioId)
         {
             Assert.True(true); 
             Assert.Throws<DomainValidationException>(() =>
             {
-                var acount = new UsuarioEntity(nome, email);
+                var acount = new UsuarioEntity(nome, email, tipoUsuarioId);
             });
         }
     #endregion
@@ -61,17 +61,17 @@ public class UsuarioEntityTest
             Assert.True(true); 
             Assert.Throws<DomainValidationException>(() =>
             {
-                var acount = new UsuarioEntity(LongLenght, LongLenght);
+                var acount = new UsuarioEntity(LongLenght, LongLenght, ValidTipoUsuario);
             });
         }
     #endregion
 
     #region <Criar>
         [Theory]
-        [InlineData(ValidName, ValidEmail)]
-        public void Usuario_ShouldCreate(string nome, string email)
+        [InlineData(ValidName, ValidEmail, ValidTipoUsuario)]
+        public void Usuario_ShouldCreate(string nome, string email, int tipoUsuarioId)
         {
-            var count = new UsuarioEntity(nome, email);
+            var count = new UsuarioEntity(nome, email, tipoUsuarioId);
             Assert.NotNull(count);
         }
     #endregion

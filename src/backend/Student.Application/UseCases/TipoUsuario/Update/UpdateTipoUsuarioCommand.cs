@@ -1,5 +1,5 @@
-namespace Student.Application.UseCases.Categoria.Update;
-public record UpdateCategoriaCommand
+namespace Student.Application.UseCases.TipoUsuario.Update;
+public record UpdateTipoUsuarioCommand
 {
     [Required(ErrorMessage = "ID é obrigatório")]
     public int Id { get; set; }

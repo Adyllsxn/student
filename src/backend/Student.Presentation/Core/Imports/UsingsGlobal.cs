@@ -43,6 +43,13 @@
     global using Student.Application.UseCases.Usuario.GetById;
     global using Student.Application.UseCases.Usuario.Search;
     global using Student.Application.UseCases.Usuario.Update;
+
+    global using Student.Application.UseCases.TipoUsuario.Create;
+    global using Student.Application.UseCases.TipoUsuario.Delete;
+    global using Student.Application.UseCases.TipoUsuario.GetAll;
+    global using Student.Application.UseCases.TipoUsuario.GetById;
+    global using Student.Application.UseCases.TipoUsuario.Search;
+    global using Student.Application.UseCases.TipoUsuario.Update;
 #endregion
 
 #region </Infrastructure>

@@ -4,7 +4,7 @@ namespace Student.Application.UseCases.Usuario.Create;
 public record CreateUsuarioCommand
 {   
     [JsonIgnore]
-    [Required(ErrorMessage = "Número do ID é obrigatório")]
+    [Required(ErrorMessage = "ID é obrigatório")]
     public int Id { get; set; }
 
     [Required( ErrorMessage = "Nome é obrigatório")]
@@ -22,4 +22,8 @@ public record CreateUsuarioCommand
     [DataType(DataType.Password)]
     [NotMapped]
     public string Password { get; set; } = null!;
+
+    [JsonIgnore]
+    [Required(ErrorMessage = "Tipo de usuário é obrigatório")]
+    public int TipoUsuarioId { get; set; }
 }

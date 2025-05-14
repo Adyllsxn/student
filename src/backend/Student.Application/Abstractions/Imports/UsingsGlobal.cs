@@ -20,6 +20,7 @@
     global using Student.Application.MethodExtensions.Postagem;
     global using Student.Application.MethodExtensions.Dashboard;
     global using Student.Application.MethodExtensions.Usuario;
+    global using Student.Application.MethodExtensions.TipoUsuario;
 
     global using Student.Application.UseCases.Dashboard;
     global using Student.Application.UseCases.Categoria.Create;    
@@ -43,6 +44,13 @@
     global using Student.Application.UseCases.Postagem.Delete;
     global using Student.Application.UseCases.Postagem.Search;
     global using Student.Application.UseCases.Postagem.Update;
+
+    global using Student.Application.UseCases.TipoUsuario.Create;
+    global using Student.Application.UseCases.TipoUsuario.Delete;
+    global using Student.Application.UseCases.TipoUsuario.GetAll;
+    global using Student.Application.UseCases.TipoUsuario.GetById;
+    global using Student.Application.UseCases.TipoUsuario.Search;
+    global using Student.Application.UseCases.TipoUsuario.Update;
 #endregion
 
 #region </Domain>

@@ -18,4 +18,8 @@ public record UpdateUsuarioCommand
     [MinLength(4, ErrorMessage = "A senha deve conter no mínimo 4 caracteres.")]
     [DataType(DataType.Password)]
     public string Password { get; set; } = null!;
+
+    [JsonIgnore]
+    [Required(ErrorMessage = "Tipo de usuário é obrigatório")]
+    public int TipoUsuarioId { get; set; }
 }

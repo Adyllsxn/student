@@ -10,6 +10,7 @@ public static class InfrastructureDI
             services.AddScoped<IPostagemRepository, PostagemRepository>();
             services.AddScoped<IDashboardRepository, DashboardRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<ITipoUsuarioRepository, TipoUsuarioRepository>();
         #endregion
 
         #region </DbConnection>
