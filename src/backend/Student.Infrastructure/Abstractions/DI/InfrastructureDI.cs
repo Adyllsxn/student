@@ -4,6 +4,7 @@ public static class InfrastructureDI
     public static void AddInfrastructureDI (this IServiceCollection services, IConfiguration configuration)
     {
         #region </Repositories>
+            services.AddScoped<IAuthenticationIdentity, AuthenticationIdentity>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddScoped<IPostagemRepository, PostagemRepository>();

@@ -12,6 +12,7 @@
 #region </Infrastructure>
     global using Student.Infrastructure.Context;
     global using Student.Infrastructure.Abstractions.DI;
+    global using Student.Infrastructure.Abstractions.Identity;
     global using Student.Infrastructure.Repositories;
 #endregion
 
@@ -20,4 +21,5 @@
     global using Student.Domain.Abstractions.Interfaces;
     global using Student.Domain.Abstractions.Shared;
     global using Student.Domain.Abstractions.Pagination;
+    global using Student.Domain.Abstractions.Authentication;
 #endregion
