@@ -1,6 +1,7 @@
 namespace Student.Presentation.Features.Dashboard.Controller;
 [ApiController]
 [Route("v1/")]
+[Authorize]
 public class DashboardController(IDashboardService service) : ControllerBase
 {
     #region </Dashboard>

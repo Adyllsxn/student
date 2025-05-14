@@ -23,7 +23,6 @@ public record CreateUsuarioCommand
     [NotMapped]
     public string Password { get; set; } = null!;
 
-    
-    [Required(ErrorMessage = "Tipo de usuário é obrigatório")]
-    public int TipoUsuarioId { get; set; }
+    [JsonIgnore]
+    public int? TipoUsuarioId { get; set; }
 }

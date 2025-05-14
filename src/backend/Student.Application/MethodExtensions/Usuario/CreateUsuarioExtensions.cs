@@ -8,7 +8,7 @@ public static class CreateUsuarioExtensions
         (
             command.Nome,
             command.Email,
-            command.TipoUsuarioId
+            command.TipoUsuarioId ?? 2
         );
     }
     
