@@ -53,7 +53,7 @@ public class AuthenticationIdentity(AppDbContext context, IConfiguration configu
                 var expiration =  DateTime.UtcNow.AddMinutes(10);
 
                 JwtSecurityToken token = new JwtSecurityToken(
-                    issuer: configuration["jwt:assuer"],
+                    issuer: configuration["jwt:issuer"],
                     audience: configuration["jwt:audience"],
                     claims: claims,
                     expires: expiration,

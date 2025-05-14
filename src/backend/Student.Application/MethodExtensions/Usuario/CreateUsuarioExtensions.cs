@@ -6,7 +6,6 @@ public static class CreateUsuarioExtensions
 
         return new UsuarioEntity
         (
-            command.Id,
             command.Nome,
             command.Email
         );
