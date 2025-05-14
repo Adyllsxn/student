@@ -1,7 +1,7 @@
 namespace Student.Infrastructure.Context.Mappings;
 public class UsuarioMapping : IEntityTypeConfiguration<UsuarioEntity>
 {
-    public void Configure(EntityTypeBuilder<UsuarioEntity> builder)
+     public void Configure(EntityTypeBuilder<UsuarioEntity> builder)
     {
         builder.ToTable("Tbl_Usuario");
         builder.HasKey(x => x.Id);
