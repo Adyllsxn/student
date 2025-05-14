@@ -1,6 +1,7 @@
 namespace Student.Presentation.Features.Postagem.Controller;
 [ApiController]
 [Route("v1/")]
+[Authorize]
 public class PostagensController(IPostagemService service) : ControllerBase
 {
 

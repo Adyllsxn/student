@@ -1,6 +1,7 @@
 namespace Student.Presentation.Features.Categoria.Controller;
 [ApiController]
 [Route("v1/")]
+[Authorize]
 public class CategoriasController(ICategoriaService service) : ControllerBase
 {
     #region </GetAll>
@@ -32,7 +33,6 @@ public class CategoriasController(ICategoriaService service) : ControllerBase
 
     #region </Create>
         [HttpPost("CreateCategoria"), EndpointSummary("Adicionar Categoria")]
-        [Authorize]
         public async Task<IActionResult> CreateAsync(CreateCategoriaCommand command, CancellationToken token)
         {
             var response = await service.CreateHandler(command,token);

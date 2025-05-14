@@ -1,6 +1,7 @@
 namespace Student.Presentation.Features.TipoUsuario.Controller;
 [ApiController]
 [Route("api/")]
+[Authorize]
 public class TipoUsuariosController(ITipoUsuarioService service) : ControllerBase
 {
     
