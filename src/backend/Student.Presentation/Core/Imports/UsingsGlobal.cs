@@ -8,6 +8,7 @@
     global using Microsoft.OpenApi.Models;
     global using Microsoft.AspNetCore.Authentication.JwtBearer;
     global using Microsoft.IdentityModel.Tokens;
+    global using Microsoft.AspNetCore.Authorization;
 #endregion
 
 #region </Presentation>

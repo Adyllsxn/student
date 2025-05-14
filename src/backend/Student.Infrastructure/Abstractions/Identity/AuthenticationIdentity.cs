@@ -2,6 +2,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Student.Infrastructure.Abstractions.Identity;
@@ -68,7 +69,7 @@ public class AuthenticationIdentity(AppDbContext context, IConfiguration configu
     #endregion
 
     #region </UserExist>
-        public async Task<bool> UserExistAsync(string email)
+    public async Task<bool> UserExistAsync(string email)
         {
             try
             {
@@ -78,6 +79,20 @@ public class AuthenticationIdentity(AppDbContext context, IConfiguration configu
                     return false;
                 }
                 return true;
+            }
+            catch(Exception error)
+            {
+                throw new Exception(error.Message);
+            }
+        }
+    #endregion
+
+    #region </GetUserByEmail>
+        public async Task<UsuarioEntity?> GetUserByEmailAsync(string email)
+        {
+            try
+            {
+                return await context.Usuarios.Where(x => x.Email.ToLower() == email.ToLower()).FirstOrDefaultAsync();
             }
             catch(Exception error)
             {

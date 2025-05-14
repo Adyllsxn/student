@@ -1,6 +1,11 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Student.Application.UseCases.Usuario.Create;
 public record CreateUsuarioCommand
 {   
+    [JsonIgnore]
+    [Required(ErrorMessage = "Número do ID é obrigatório")]
+    public int Id { get; set; }
 
     [Required( ErrorMessage = "Nome é obrigatório")]
     [MaxLength(200, ErrorMessage = "O Nome não pode ultrapassar de 200 caracteres")]
@@ -15,5 +20,6 @@ public record CreateUsuarioCommand
     [Required(ErrorMessage = "Password é obrigatório")]
     [MinLength(4, ErrorMessage = "A senha deve conter no mínimo 4 caracteres.")]
     [DataType(DataType.Password)]
+    [NotMapped]
     public string Password { get; set; } = null!;
 }

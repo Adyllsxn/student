@@ -3,8 +3,10 @@ public static class CreateUsuarioExtensions
 {
     public static UsuarioEntity MapToUsuarioEntity(this CreateUsuarioCommand command)
     {
+
         return new UsuarioEntity
         (
+            command.Id,
             command.Nome,
             command.Email
         );

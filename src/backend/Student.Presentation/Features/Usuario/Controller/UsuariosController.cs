@@ -1,71 +1,59 @@
+using Student.Domain.Abstractions.Authentication;
 using Student.Presentation.Features.Usuario.Model;
 
 namespace Student.Presentation.Features.Usuario.Controller;
 [ApiController]
 [Route("v1/")]
-public class UsuariosController(IUsuarioService service) : ControllerBase
+public class UsuariosController(IUsuarioService service, IAuthenticationIdentity authentication) : ControllerBase
 {
     #region </Register>
         [HttpPost("Register"), EndpointSummary("Registrar um novo usuário.")]
         public async Task<ActionResult<TokenModel>> Register(CreateUsuarioCommand command, CancellationToken token)
         {
+            var emailExist = await authentication.UserExistAsync(command.Email);
+            if(emailExist)
+            {
+                return BadRequest("Este email já possui um cadastro.");
+            }
 
-        }
-    #endregion
-
-    #region </GetAll>
-        [HttpGet("Usuários"), EndpointSummary("Obter Usuários")]
-        public async Task<IActionResult> GetAllAsync([FromQuery] GetUsuariosCommand command, CancellationToken token)
-        {
-            var response = await service.GetHandler(command, token);
-            return Ok(response);
-        }
-    #endregion
-
-    #region </GetById>
-        [HttpGet("UsuárioById"), EndpointSummary("Obter Usuário Pelo Id")]
-        public async Task<IActionResult> GetByIdAsync([FromQuery] GetUsuarioByIdCommand command, CancellationToken token)
-        {
-            var response = await service.GetByIdHandler(command,token);
-            return Ok(response);
-        }
-    #endregion
-
-    #region </Search>
-        [HttpGet("SearchUsuário"), EndpointSummary("Pesquisar Usuário")]
-        public async Task<IActionResult> SearchAsync([FromQuery] SearchUsuarioCommand command, CancellationToken token)
-        {
-            var response = await service.SearchHendler(command,token);
-            return Ok(response);
-        }
-    #endregion
-
-    #region </Create>
-        [HttpPost("CreateUsuário"), EndpointSummary("Adicionar Usuário")]
-        public async Task<IActionResult> CreateAsync(CreateUsuarioCommand command, CancellationToken token)
-        {
             var response = await service.CreateHandler(command,token);
-            return Ok(response);
+            if(response == null)
+            {
+                return BadRequest("Ocorreu um erro ao cadastrar.");
+            }
+
+            var tokenReturn = authentication.GenerateTokenAsync(command.Id, command.Email);
+            return new TokenModel{
+                Token = tokenReturn
+            };
         }
     #endregion
 
-    #region </Delete>
-        [HttpDelete("DeleteUsuário"), EndpointSummary("Excluir Usuário")]
-        public async Task<IActionResult> DeleteAsync(DeleteUsuarioCommand command, CancellationToken token)
+    #region </Login>
+        [HttpPost("Login"), EndpointSummary("Fazendo o login no sistema")]
+        public async Task<ActionResult<TokenModel>> Login(LoginModel login)
         {
-            var response = await service.DeleteHandler(command,token);
-            return Ok(response);
+            var emailExist = await authentication.UserExistAsync(login.Email);
+            if(!emailExist)
+            {
+                return Unauthorized("Usuário não existe");
+            }
+            
+            var result = authentication.AuthenticateAsync(login.Email, login.Password);
+            if(result == null)
+            {
+                return Unauthorized("Usuário ou Senha Inválida.");
+            }
+
+            var usuario = await authentication.GetUserByEmailAsync(login.Email);
+
+
+            var createToken = authentication.GenerateTokenAsync(usuario.Id, usuario.Email);
+
+            return new TokenModel{
+                Token = createToken
+            };
         }
     #endregion
-
-    #region </Update>
-        [HttpPut("UpdateUsuário"), EndpointSummary("Editar Usuário")]
-        public async Task<IActionResult> UpdateAsync(UpdateUsuarioCommand command, CancellationToken token)
-        {
-            var response = await service.UpdateHendler(command,token);
-            return Ok(response);
-        }
-    #endregion
-
 
 }
