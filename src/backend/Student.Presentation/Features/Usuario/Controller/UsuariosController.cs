@@ -1,11 +1,9 @@
-using Student.Domain.Abstractions.Authentication;
-using Student.Presentation.Features.Usuario.Model;
-
 namespace Student.Presentation.Features.Usuario.Controller;
 [ApiController]
 [Route("v1/")]
 public class UsuariosController(IUsuarioService service, IAuthenticationIdentity authentication) : ControllerBase
 {
+
     #region </Register>
         [HttpPost("Register"), EndpointSummary("Registrar um novo usuário.")]
         public async Task<ActionResult<TokenModel>> Register(CreateUsuarioCommand command, CancellationToken token)
@@ -46,7 +44,10 @@ public class UsuariosController(IUsuarioService service, IAuthenticationIdentity
             }
 
             var usuario = await authentication.GetUserByEmailAsync(login.Email);
-
+            if (usuario == null)
+            {
+                return Unauthorized("Usuário não encontrado.");
+            }
 
             var createToken = authentication.GenerateTokenAsync(usuario.Id, usuario.Email);
 

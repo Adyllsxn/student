@@ -16,6 +16,7 @@
     global using Student.Presentation.Core.Extensions.Architecture;
     global using Student.Presentation.Core.Configurations;
     global using Student.Presentation.Features.Postagem.Model;
+    global using Student.Presentation.Features.Usuario.Model;
 #endregion
 
 #region </Application>
@@ -46,4 +47,8 @@
 
 #region </Infrastructure>
     global using Student.Infrastructure.Abstractions.DI;
+#endregion
+
+#region </Domain>
+    global using Student.Domain.Abstractions.Authentication;
 #endregion

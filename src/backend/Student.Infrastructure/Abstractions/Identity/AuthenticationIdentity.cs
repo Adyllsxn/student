@@ -1,10 +1,3 @@
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.IdentityModel.Tokens;
-
 namespace Student.Infrastructure.Abstractions.Identity;
 public class AuthenticationIdentity(AppDbContext context, IConfiguration configuration) : IAuthenticationIdentity
 {
